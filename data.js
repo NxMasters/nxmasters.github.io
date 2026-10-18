@@ -41,7 +41,7 @@ window.NX_CONFIG = {
         },
         {
             "id": "port",
-            "label": "Ports Nativos",
+            "label": "Ports ",
             "icon": "fa-cube",
             "color": "#ea580c"
         },
