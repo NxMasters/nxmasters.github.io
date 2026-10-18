@@ -573,7 +573,11 @@
                         </div>
                         <div class="field">
                             <label>☁️ Link Directo de TeraBox</label>
-                            <input type="url" value="${escapeAttr(g.teraboxLink)}" placeholder="https://1024terabox.com/s/..." oninput="state.games[${idx}].teraboxLink = this.value">
+                            <input type="url" value="${escapeAttr(g.teraboxLink || '')}" placeholder="https://1024terabox.com/s/..." oninput="state.games[${idx}].teraboxLink = this.value">
+                        </div>
+                        <div class="field">
+                            <label>🟢 Link Directo de Google Drive (GDrive)</label>
+                            <input type="url" value="${escapeAttr(g.gdriveLink || '')}" placeholder="https://drive.google.com/file/d/..." oninput="state.games[${idx}].gdriveLink = this.value">
                         </div>
                         <div class="field">
                             <label>📦 Link de Parche Extra (Opcional)</label>
@@ -671,6 +675,7 @@
                 image: "assets/nxmasters_logo.jpg",
                 description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
                 teraboxLink: "https://www.terabox.com/",
+                gdriveLink: "https://drive.google.com/",
                 patchLink: ""
             });
             renderAdminGames();

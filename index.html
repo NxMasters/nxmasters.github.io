@@ -65,7 +65,8 @@
                     <strong>Recompilaciones Estáticas</strong>, <strong>Ports Nativos (.nro)</strong>, <strong>Wrappers Android32</strong> y <strong>Forks optimizados con Autorun / WineNX</strong>, además de grupos de ayuda y partidas multijugador entre toda la comunidad.
                 </p>
                 <div class="hero-badges">
-                    <span class="tech-pill terabox"><i class="fa-solid fa-cloud-arrow-down"></i> Enlaces Directos en TeraBox</span>
+                    <span class="tech-pill terabox"><i class="fa-solid fa-cloud-arrow-down"></i> Descarga por TeraBox</span>
+                    <span class="tech-pill gdrive"><i class="fa-brands fa-google-drive"></i> Descarga por GDrive</span>
                     <span class="tech-pill"><i class="fa-solid fa-microchip"></i> Recompilaciones Estáticas</span>
                     <span class="tech-pill"><i class="fa-brands fa-android"></i> Wrappers Android32</span>
                     <span class="tech-pill"><i class="fa-solid fa-code-branch"></i> Forks WineNX & Autorun</span>
@@ -107,14 +108,14 @@
                 <i class="fa-solid fa-screwdriver-wrench" style="color:var(--banner-gold);"></i> Guías Rápidas de Instalación en Switch
             </h2>
             <p style="color:var(--text-muted);font-size:0.9rem;">
-                Cada lanzamiento de NXMASTERS indica su arquitectura en la esquina superior derecha de la portada. Sigue los pasos según el tipo de proyecto descargado desde TeraBox:
+                Cada lanzamiento de NXMASTERS indica su arquitectura en la esquina superior derecha de la portada. Sigue los pasos según el tipo de proyecto descargado desde <strong>TeraBox</strong> o <strong>Google Drive (GDrive)</strong>:
             </p>
 
             <div class="guide-grid">
                 <div class="guide-card">
                     <h3><i class="fa-solid fa-bolt"></i> Ports Nativos & Recompilaciones Estáticas</h3>
                     <ol class="guide-steps">
-                        <li><span class="step-num">1</span><span>Descarga el archivo <code>.zip</code> directo desde el botón azul de <strong>TeraBox</strong>.</span></li>
+                        <li><span class="step-num">1</span><span>Descarga el archivo <code>.zip</code> directo desde el botón de <strong>TeraBox</strong> o <strong>GDrive</strong>.</span></li>
                         <li><span class="step-num">2</span><span>Extrae la carpeta dentro de <code>sdmc:/switch/&lt;nombre-del-juego&gt;/</code> en tu microSD.</span></li>
                         <li><span class="step-num">3</span><span>Inicia el <strong>hbmenu</strong> en modo <em>Title Takeover</em> (manteniendo pulsado <strong>R</strong> al abrir cualquier juego).</span></li>
                         <li><span class="step-num">4</span><span>Ejecuta el archivo <code>.nro</code> o usa el forwarder incluido para abrirlo desde el menú Home.</span></li>
@@ -124,7 +125,7 @@
                 <div class="guide-card">
                     <h3><i class="fa-brands fa-android"></i> Wrappers (Android32 / GLES)</h3>
                     <ol class="guide-steps">
-                        <li><span class="step-num">1</span><span>Descarga el paquete del wrapper desde <strong>TeraBox</strong> y descomprímelo en la raíz de tu microSD.</span></li>
+                        <li><span class="step-num">1</span><span>Descarga el paquete del wrapper desde <strong>TeraBox</strong> o <strong>GDrive</strong> y descomprímelo en la raíz de tu microSD.</span></li>
                         <li><span class="step-num">2</span><span>Verifica que las librerías <code>.so</code> y assets queden en su ruta de <code>/switch/</code> correspondiente.</span></li>
                         <li><span class="step-num">3</span><span>Ábrelo desde <strong>Sphaira / hbmenu</strong> con toda la RAM disponible (<em>Applet Mode NO soportado</em>).</span></li>
                     </ol>
@@ -133,7 +134,7 @@
                 <div class="guide-card">
                     <h3><i class="fa-solid fa-code-branch"></i> Forks (WineNX / Autorun PC)</h3>
                     <ol class="guide-steps">
-                        <li><span class="step-num">1</span><span>Descarga el fork desde <strong>TeraBox</strong> y descomprime la carpeta en <code>/switch</code> de tu microSD.</span></li>
+                        <li><span class="step-num">1</span><span>Descarga el fork desde <strong>TeraBox</strong> o <strong>GDrive</strong> y descomprime la carpeta en <code>/switch</code> de tu microSD.</span></li>
                         <li><span class="step-num">2</span><span>Entra al <strong>hbmenu</strong> manteniendo presionado <strong>R</strong> sobre cualquier juego instalado.</span></li>
                         <li><span class="step-num">3</span><span>Al abrir el fork te preguntará si deseas crear el acceso directo en el menú Home: pulsa <strong>Aceptar (+)</strong> y listo.</span></li>
                     </ol>
@@ -155,7 +156,7 @@
 
     </main>
 
-    <!-- MODAL DETALLES Y DESCARGA TERABOX -->
+    <!-- MODAL DETALLES Y DESCARGA TERABOX / GDRIVE -->
     <dialog id="modal-juego" class="modal-juego">
         <div id="modal-body"></div>
     </dialog>
@@ -165,7 +166,7 @@
         <p style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem;color:#fff;margin-bottom:0.35rem;">
             NX<span class="brand-gold">MASTERS</span> TEAM &copy; 2026
         </p>
-        <p>Recompilaciones Estáticas • Ports Nativos • Wrappers • Forks Autorun — Alojados directamente en <strong>TeraBox</strong>.</p>
+        <p>Recompilaciones Estáticas • Ports Nativos • Wrappers • Forks Autorun — Alojados directamente en <strong>TeraBox</strong> y <strong>Google Drive</strong>.</p>
     </footer>
 
     <script src="data.js"></script>

@@ -187,9 +187,14 @@ function renderCardActionButton(game) {
                 <i class="fa-solid fa-clock"></i> Próximamente...
             </span>`;
     }
+    const tbUrl = game.teraboxLink || "https://www.terabox.com/";
+    const gdUrl = game.gdriveLink || "https://drive.google.com/";
     return `
-        <a href="${game.teraboxLink || '#'}" target="_blank" rel="noopener" class="btn-terabox" title="Descargar directo desde TeraBox">
+        <a href="${tbUrl}" target="_blank" rel="noopener" class="btn-terabox" title="Descargar directo desde TeraBox">
             <i class="fa-solid fa-cloud-arrow-down"></i> TeraBox
+        </a>
+        <a href="${gdUrl}" target="_blank" rel="noopener" class="btn-gdrive" title="Descargar directo desde Google Drive">
+            <i class="fa-brands fa-google-drive"></i> GDrive
         </a>`;
 }
 
@@ -276,6 +281,8 @@ function openGameModal(id) {
     const body = document.getElementById("modal-body");
     const builds = (game.engine || []).join(" • ");
     const status = game.status || "disponible";
+    const tbUrl = game.teraboxLink || "https://www.terabox.com/";
+    const gdUrl = game.gdriveLink || "https://drive.google.com/";
 
     const modalActionHtml = status === "mantenimiento"
         ? `<div class="btn-status btn-mantenimiento" style="flex:1;padding:0.85rem 1.2rem;font-size:0.95rem;">
@@ -288,8 +295,11 @@ function openGameModal(id) {
                    <i class="fa-solid fa-clock"></i> Próximamente — En Desarrollo por NXMasters
                </div>
            </div>`
-        : `<a href="${game.teraboxLink}" target="_blank" rel="noopener" class="btn-terabox" style="flex:1;padding:0.8rem 1.2rem;font-size:0.95rem;">
-               <i class="fa-solid fa-cloud-arrow-down"></i> Descargar Archivo desde TeraBox
+        : `<a href="${tbUrl}" target="_blank" rel="noopener" class="btn-terabox" style="flex:1;padding:0.8rem 1rem;font-size:0.92rem;">
+               <i class="fa-solid fa-cloud-arrow-down"></i> Descargar por TeraBox
+           </a>
+           <a href="${gdUrl}" target="_blank" rel="noopener" class="btn-gdrive" style="flex:1;padding:0.8rem 1rem;font-size:0.92rem;">
+               <i class="fa-brands fa-google-drive"></i> Descargar por GDrive
            </a>
            ${game.patchLink ? `
            <a href="${game.patchLink}" target="_blank" rel="noopener" class="community-btn" style="background:linear-gradient(135deg,#ea580c,#f59e0b);color:#140800;font-weight:900;">

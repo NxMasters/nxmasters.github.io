@@ -356,6 +356,12 @@ body::before {
     color: #7dd3fc;
 }
 
+.tech-pill.gdrive {
+    background: rgba(16, 185, 129, 0.14);
+    border-color: rgba(52, 211, 153, 0.45);
+    color: #6ee7b7;
+}
+
 .filters-bar {
     display: flex;
     flex-wrap: wrap;
@@ -583,29 +589,36 @@ body::before {
 }
 
 .card-actions {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.45rem;
+    display: flex;
+    align-items: stretch;
+    gap: 0.38rem;
     margin-top: 0.45rem;
 }
 
-.btn-terabox {
+.btn-terabox,
+.btn-gdrive {
+    flex: 1;
+    min-width: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.45rem;
-    padding: 0.58rem 0.75rem;
+    gap: 0.35rem;
+    padding: 0.56rem 0.5rem;
     border-radius: 10px;
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #fff;
     text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s var(--ease-out);
+}
+
+.btn-terabox {
     background: linear-gradient(100deg, #0284c7, #2563eb);
     border: 1px solid rgba(125, 211, 252, 0.45);
     box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
-    cursor: pointer;
-    transition: all 0.2s var(--ease-out);
 }
 
 .btn-terabox:hover {
@@ -614,11 +627,24 @@ body::before {
     box-shadow: 0 6px 18px rgba(2, 132, 199, 0.55);
 }
 
+.btn-gdrive {
+    background: linear-gradient(100deg, #059669, #16a34a);
+    border: 1px solid rgba(110, 231, 183, 0.45);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.32);
+}
+
+.btn-gdrive:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.55);
+}
+
 .btn-info {
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
+    width: 36px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -635,6 +661,7 @@ body::before {
 
 /* ESTADOS ESPECIALES: EN MANTENIMIENTO Y PRÓXIMAMENTE */
 .btn-status {
+    flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
