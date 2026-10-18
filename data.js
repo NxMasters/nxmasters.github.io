@@ -151,9 +151,10 @@ window.NX_CONFIG = {
             "description": "Fork optimizado por NXMasters con configuraciones de memoria ajustadas para Nintendo Switch, soporte para campañas cooperativas y campañas MOD y acceso directo desde el menú Home.",
             "teraboxLink": "https://www.terabox.com/s/1nxmasters-l4d2-ejemplo",
             "patchLink": "",
-            "progress": 56,
-            "showProgress": false,
-            "status": "disponible"
+            "progress": 95,
+            "showProgress": true,
+            "status": "disponible",
+            "gdriveLink": "https://drive.google.com/file/d/1E3ryWi-5Jc3HOacJwkwBgSbgkbsSuhpp/view?usp=sharing"
         },
         {
             "id": 4,
