@@ -98,32 +98,32 @@ window.NX_CONFIG = {
         {
             "name": "Boss Shifu",
             "avatar": "🐐",
-            "role": "Líder & Maestro de Ingeniería NX",
+            "role": "Co-Líder & Maestro de Ingeniería NX",
             "specialty": "Recompilaciones Estáticas, WineNX & Arquitectura"
         },
         {
-            "name": "Toro NX",
+            "name": "Maestro Ascencion H.O",
             "avatar": "🐂",
-            "role": "Co-Fundador & Core Porter",
-            "specialty": "Ports Nativos, Optimización Switch OLED & Testing"
+            "role": "Fundador & Core Porter",
+            "specialty": "Ports Nativos, Optimización NX & Forks"
         },
         {
-            "name": "Lobo Security",
+            "name": "Dani",
             "avatar": "🐺",
             "role": "Moderador Principal & Dev",
             "specialty": "Seguridad de Builds, Forks Autorun & Soporte"
         },
         {
-            "name": "Porky L4D",
+            "name": "Lord Erick",
             "avatar": "🐷",
-            "role": "Especialista en Shooters & Forks",
+            "role": "Especialista en Mods & Forks",
             "specialty": "Source Engine, Left 4 Dead 2 & Multiplayer"
         },
         {
             "name": "Kris",
             "avatar": "🦝",
             "role": "Developer & Pro Tester",
-            "specialty": "Wrappers, Perfiles de Mando & Comunidad"
+            "specialty": "Beta-Tester & Comunidad"
         },
         {
             "name": "JaxCucayo",
