@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Sincronización instantánea con los últimos cambios publicados por el Staff
     try {
-        const res = await fetch(`https://api.github.com/repos/Boss-Shifu/nxmasters/contents/data.js?t=${Date.now()}`, {
+        const res = await fetch(`https://api.github.com/repos/NxMasters/nxmasters.github.io/contents/data.js?t=${Date.now()}`, {
             headers: { "Accept": "application/vnd.github+json" }
         });
         if (res.ok) {
