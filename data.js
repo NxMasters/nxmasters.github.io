@@ -152,8 +152,8 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/s/1nxmasters-l4d2-ejemplo",
             "patchLink": "",
             "progress": 56,
-            "showProgress": true,
-            "status": "mantenimiento"
+            "showProgress": false,
+            "status": "disponible"
         },
         {
             "id": 4,
