@@ -538,6 +538,36 @@
                             </select>
                         </div>
                         <div class="field">
+                            <label>🚦 Estado del Juego (Botón y Acceso al Link)</label>
+                            <select onchange="updateGameStatus(${idx}, this.value)" style="font-weight:700; border-color:${(g.status || 'disponible') === 'mantenimiento' ? '#f59e0b' : (g.status === 'proximamente' ? '#a78bfa' : 'rgba(16,185,129,0.45)')};">
+                                <option value="disponible" ${(g.status || 'disponible') === 'disponible' ? 'selected' : ''}>✅ Disponible (Link de descarga activo)</option>
+                                <option value="mantenimiento" ${g.status === 'mantenimiento' ? 'selected' : ''}>🛠️ En Mantenimiento (Oculta link + Botón Ámbar)</option>
+                                <option value="proximamente" ${g.status === 'proximamente' ? 'selected' : ''}>⏳ Próximamente... (Oculta link + Barra de Progreso)</option>
+                            </select>
+                        </div>
+                        <div class="field" style="background:rgba(15,17,26,0.65); padding:10px 12px; border-radius:10px; border:1px solid var(--border);">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
+                                <label style="margin:0; display:flex; align-items:center; gap:6px; cursor:pointer;">
+                                    <input type="checkbox" ${(g.status === 'proximamente' || g.showProgress) ? 'checked' : ''} onchange="toggleGameProgress(${idx}, this.checked)" style="width:auto; accent-color:var(--accent);">
+                                    <span>📊 Barra de Progreso (Rojo ➔ Amarillo ➔ Verde)</span>
+                                </label>
+                                <span id="prog-badge-${idx}" style="font-size:0.82rem; font-weight:800; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.06); color:${getAdminProgressStyle(g.progress ?? 50).color};">
+                                    ${Math.max(0, Math.min(100, Number(g.progress ?? 50)))}%
+                                </span>
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <input type="range" min="0" max="100" step="1" value="${Math.max(0, Math.min(100, Number(g.progress ?? 50)))}"
+                                    oninput="updateGameProgress(${idx}, this.value)"
+                                    style="flex:1; cursor:pointer; padding:0;">
+                                <input type="number" min="0" max="100" id="prog-num-${idx}" value="${Math.max(0, Math.min(100, Number(g.progress ?? 50)))}"
+                                    oninput="updateGameProgress(${idx}, this.value)"
+                                    style="width:64px; text-align:center; padding:5px 6px; font-weight:700;">
+                            </div>
+                            <div style="width:100%; height:9px; background:rgba(0,0,0,0.55); border-radius:999px; overflow:hidden; margin-top:8px; border:1px solid rgba(255,255,255,0.08);">
+                                <div id="prog-fill-${idx}" style="height:100%; border-radius:999px; transition:width 0.15s ease; width:${Math.max(0, Math.min(100, Number(g.progress ?? 50)))}%; background:${getAdminProgressStyle(g.progress ?? 50).background}; box-shadow:${getAdminProgressStyle(g.progress ?? 50).shadow};"></div>
+                            </div>
+                        </div>
+                        <div class="field">
                             <label>URL de Carátula (Se auto-ajusta sola al marco 2:3)</label>
                             <input type="text" id="img-input-${idx}" value="${escapeAttr(g.image)}" oninput="state.games[${idx}].image = this.value; document.getElementById('preview-img-${idx}').src = this.value">
                         </div>
@@ -556,6 +586,64 @@
                     </div>
                 </div>
             `).join("");
+        }
+
+        function getAdminProgressStyle(pctInput) {
+            const pct = Math.max(0, Math.min(100, Number(pctInput) || 0));
+            const hue = pct <= 50
+                ? Math.round((pct / 50) * 48)
+                : Math.round(48 + ((pct - 50) / 50) * 84);
+            const hueStart = Math.max(0, hue - 14);
+            const color = `hsl(${hue}, 92%, 52%)`;
+            const colorStart = `hsl(${hueStart}, 92%, 44%)`;
+            return {
+                pct,
+                color,
+                background: `linear-gradient(90deg, ${colorStart} 0%, ${color} 100%)`,
+                shadow: `0 0 12px hsla(${hue}, 92%, 52%, 0.45)`
+            };
+        }
+
+        function updateGameStatus(idx, newStatus) {
+            state.games[idx].status = newStatus;
+            if (newStatus === 'proximamente') {
+                state.games[idx].showProgress = true;
+                if (typeof state.games[idx].progress !== 'number') {
+                    state.games[idx].progress = 50;
+                }
+            } else if (newStatus === 'disponible') {
+                state.games[idx].showProgress = false;
+            }
+            renderAdminGames();
+        }
+
+        function toggleGameProgress(idx, checked) {
+            state.games[idx].showProgress = checked;
+            if (checked && typeof state.games[idx].progress !== 'number') {
+                state.games[idx].progress = 50;
+            }
+        }
+
+        function updateGameProgress(idx, rawVal) {
+            const pct = Math.max(0, Math.min(100, Number(rawVal) || 0));
+            state.games[idx].progress = pct;
+            state.games[idx].showProgress = true;
+            const style = getAdminProgressStyle(pct);
+            const badge = document.getElementById(`prog-badge-${idx}`);
+            const fill = document.getElementById(`prog-fill-${idx}`);
+            const num = document.getElementById(`prog-num-${idx}`);
+            if (badge) {
+                badge.textContent = `${pct}%`;
+                badge.style.color = style.color;
+            }
+            if (fill) {
+                fill.style.width = `${pct}%`;
+                fill.style.background = style.background;
+                fill.style.boxShadow = style.shadow;
+            }
+            if (num && document.activeElement !== num) {
+                num.value = pct;
+            }
         }
 
         function updateGameType(idx, newType) {
@@ -577,6 +665,9 @@
                 size: "1.0 GB",
                 language: "es",
                 author: "NXMasters Team",
+                status: "disponible",
+                progress: 50,
+                showProgress: false,
                 image: "assets/nxmasters_logo.jpg",
                 description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
                 teraboxLink: "https://www.terabox.com/",

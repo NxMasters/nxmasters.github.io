@@ -133,6 +133,66 @@ function getTypeBadge(type, label) {
     return `<span class="badge-type type-${type}" ${customColor}><i class="fa-solid ${icon}"></i> ${label || (sub ? sub.label : type)}</span>`;
 }
 
+// Calcula el color gradual continuo de 0% (Rojo) -> 50% (Amarillo) -> 100% (Verde)
+function getProgressStyle(pctInput) {
+    const pct = Math.max(0, Math.min(100, Number(pctInput) || 0));
+    let hue;
+    if (pct <= 50) {
+        // 0% -> 50%: Rojo (0°) a Amarillo (48°)
+        hue = Math.round((pct / 50) * 48);
+    } else {
+        // 50% -> 100%: Amarillo (48°) a Verde Esmeralda (132°)
+        hue = Math.round(48 + ((pct - 50) / 50) * 84);
+    }
+    const hStart = Math.max(0, hue - 10);
+    const hEnd = Math.min(140, hue + 8);
+    return {
+        pct,
+        color: `hsl(${hue}, 95%, 56%)`,
+        bg: `linear-gradient(90deg, hsl(${hStart}, 92%, 46%), hsl(${hEnd}, 92%, 52%))`,
+        shadow: `0 0 12px hsla(${hue}, 95%, 50%, 0.6)`
+    };
+}
+
+function renderProgressBar(game) {
+    const status = game.status || "disponible";
+    if (status !== "proximamente" && !game.showProgress) {
+        return "";
+    }
+    const st = getProgressStyle(game.progress ?? 50);
+    return `
+        <div class="progress-wrap" title="Avance del desarrollo: ${st.pct}%">
+            <div class="progress-head">
+                <span style="color:var(--text-muted);"><i class="fa-solid fa-bars-progress"></i> Avance</span>
+                <span style="color:${st.color};">${st.pct}%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:${st.pct}%;background:${st.bg};box-shadow:${st.shadow};"></div>
+            </div>
+        </div>
+    `;
+}
+
+function renderCardActionButton(game) {
+    const status = game.status || "disponible";
+    if (status === "mantenimiento") {
+        return `
+            <span class="btn-status btn-mantenimiento" aria-disabled="true" title="Este proyecto se encuentra temporalmente en mantenimiento">
+                <i class="fa-solid fa-screwdriver-wrench"></i> En Mantenimiento
+            </span>`;
+    }
+    if (status === "proximamente") {
+        return `
+            <span class="btn-status btn-proximamente" aria-disabled="true" title="Proyecto en desarrollo por NXMasters">
+                <i class="fa-solid fa-clock"></i> Próximamente...
+            </span>`;
+    }
+    return `
+        <a href="${game.teraboxLink || '#'}" target="_blank" rel="noopener" class="btn-terabox" title="Descargar directo desde TeraBox">
+            <i class="fa-solid fa-cloud-arrow-down"></i> TeraBox
+        </a>`;
+}
+
 function renderCatalog() {
     const grid = document.getElementById("games-grid");
     const countBadge = document.getElementById("game-count");
@@ -195,10 +255,9 @@ function renderCatalog() {
                     <span class="spec" title="Arquitectura"><i class="fa-solid fa-microchip"></i> ${game.arch || "ARM64"}</span>
                     ${game.size ? `<span class="spec" title="Peso aproximado"><i class="fa-solid fa-hard-drive"></i> ${game.size}</span>` : ""}
                 </div>
+                ${renderProgressBar(game)}
                 <div class="card-actions">
-                    <a href="${game.teraboxLink || '#'}" target="_blank" rel="noopener" class="btn-terabox" title="Descargar directo desde TeraBox">
-                        <i class="fa-solid fa-cloud-arrow-down"></i> TeraBox
-                    </a>
+                    ${renderCardActionButton(game)}
                     <button type="button" class="btn-info" onclick="openGameModal(${game.id})" title="Ver ficha técnica e instrucciones">
                         <i class="fa-solid fa-circle-info"></i>
                     </button>
@@ -216,6 +275,26 @@ function openGameModal(id) {
     const modal = document.getElementById("modal-juego");
     const body = document.getElementById("modal-body");
     const builds = (game.engine || []).join(" • ");
+    const status = game.status || "disponible";
+
+    const modalActionHtml = status === "mantenimiento"
+        ? `<div class="btn-status btn-mantenimiento" style="flex:1;padding:0.85rem 1.2rem;font-size:0.95rem;">
+               <i class="fa-solid fa-screwdriver-wrench"></i> Juego en Mantenimiento — Descarga Deshabilitada Temporalmente
+           </div>`
+        : status === "proximamente"
+        ? `<div style="width:100%;">
+               ${renderProgressBar(game)}
+               <div class="btn-status btn-proximamente" style="width:100%;margin-top:0.65rem;padding:0.85rem 1.2rem;font-size:0.95rem;">
+                   <i class="fa-solid fa-clock"></i> Próximamente — En Desarrollo por NXMasters
+               </div>
+           </div>`
+        : `<a href="${game.teraboxLink}" target="_blank" rel="noopener" class="btn-terabox" style="flex:1;padding:0.8rem 1.2rem;font-size:0.95rem;">
+               <i class="fa-solid fa-cloud-arrow-down"></i> Descargar Archivo desde TeraBox
+           </a>
+           ${game.patchLink ? `
+           <a href="${game.patchLink}" target="_blank" rel="noopener" class="community-btn" style="background:linear-gradient(135deg,#ea580c,#f59e0b);color:#140800;font-weight:900;">
+               <i class="fa-solid fa-box-archive"></i> Descargar Parche Extra (TeraBox)
+           </a>` : ""}`;
 
     body.innerHTML = `
         <div class="modal-header">
@@ -239,17 +318,11 @@ function openGameModal(id) {
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Arquitectura</span><strong>${game.arch || "N/A"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Entorno / Motor</span><strong>${builds || "Estándar"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Tamaño</span><strong>${game.size || "N/A"}</strong></div>
-            <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Servidor</span><strong style="color:#38bdf8;">TeraBox Directo</strong></div>
+            <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Estado</span><strong style="color:${status === 'mantenimiento' ? '#fb923c' : status === 'proximamente' ? '#c084fc' : '#38bdf8'};">${status === 'mantenimiento' ? 'En Mantenimiento' : status === 'proximamente' ? 'Próximamente' : 'TeraBox Directo'}</strong></div>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
-            <a href="${game.teraboxLink}" target="_blank" rel="noopener" class="btn-terabox" style="flex:1;padding:0.8rem 1.2rem;font-size:0.95rem;">
-                <i class="fa-solid fa-cloud-arrow-down"></i> Descargar Archivo desde TeraBox
-            </a>
-            ${game.patchLink ? `
-            <a href="${game.patchLink}" target="_blank" rel="noopener" class="community-btn" style="background:linear-gradient(135deg,#ea580c,#f59e0b);color:#140800;font-weight:900;">
-                <i class="fa-solid fa-box-archive"></i> Descargar Parche Extra (TeraBox)
-            </a>` : ""}
+            ${modalActionHtml}
         </div>
     `;
     modal.showModal();
