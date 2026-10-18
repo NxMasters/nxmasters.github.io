@@ -571,12 +571,24 @@
                             <label>URL de Carátula (Se auto-ajusta sola al marco 2:3)</label>
                             <input type="text" id="img-input-${idx}" value="${escapeAttr(g.image)}" oninput="state.games[${idx}].image = this.value; document.getElementById('preview-img-${idx}').src = this.value">
                         </div>
-                        <div class="field">
-                            <label>☁️ Link Directo de TeraBox</label>
+                        <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableTerabox !== false) ? 'rgba(56,189,248,0.4)' : 'var(--border)'}; opacity:${(g.enableTerabox !== false) ? '1' : '0.6'};">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
+                                <label style="margin:0;">☁️ Link Directo de TeraBox</label>
+                                <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableTerabox !== false) ? 'rgba(2,132,199,0.25)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableTerabox !== false) ? '#38bdf8' : '#94a3b8'}; border:1px solid ${(g.enableTerabox !== false) ? 'rgba(56,189,248,0.5)' : 'rgba(255,255,255,0.12)'};">
+                                    <input type="checkbox" ${(g.enableTerabox !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableTerabox = this.checked; renderAdminGames();" style="width:auto; accent-color:#0284c7;">
+                                    <span>${(g.enableTerabox !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
+                                </label>
+                            </div>
                             <input type="url" value="${escapeAttr(g.teraboxLink || '')}" placeholder="https://1024terabox.com/s/..." oninput="state.games[${idx}].teraboxLink = this.value">
                         </div>
-                        <div class="field">
-                            <label>🟢 Link Directo de Google Drive (GDrive)</label>
+                        <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableGdrive !== false) ? 'rgba(16,185,129,0.4)' : 'var(--border)'}; opacity:${(g.enableGdrive !== false) ? '1' : '0.6'};">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
+                                <label style="margin:0;">🟢 Link Directo de Google Drive (GDrive)</label>
+                                <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableGdrive !== false) ? 'rgba(16,185,129,0.22)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableGdrive !== false) ? '#34d399' : '#94a3b8'}; border:1px solid ${(g.enableGdrive !== false) ? 'rgba(52,211,153,0.5)' : 'rgba(255,255,255,0.12)'};">
+                                    <input type="checkbox" ${(g.enableGdrive !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableGdrive = this.checked; renderAdminGames();" style="width:auto; accent-color:#10b981;">
+                                    <span>${(g.enableGdrive !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
+                                </label>
+                            </div>
                             <input type="url" value="${escapeAttr(g.gdriveLink || '')}" placeholder="https://drive.google.com/file/d/..." oninput="state.games[${idx}].gdriveLink = this.value">
                         </div>
                         <div class="field">
@@ -672,6 +684,8 @@
                 status: "disponible",
                 progress: 50,
                 showProgress: false,
+                enableTerabox: true,
+                enableGdrive: true,
                 image: "assets/nxmasters_logo.jpg",
                 description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
                 teraboxLink: "https://www.terabox.com/",
