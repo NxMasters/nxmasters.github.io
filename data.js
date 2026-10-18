@@ -138,7 +138,7 @@ window.NX_CONFIG = {
             "title": "Left4Dead",
             "type": "fork",
             "typeLabel": "Fork Autorun",
-            "category": "Acción/Shooter/Survival",
+            "category": "Acción / Shooter / Survival",
             "arch": "ARM64 / WineNX",
             "engine": [
                 "Autorun 4.5"
