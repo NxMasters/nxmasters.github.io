@@ -141,7 +141,9 @@ window.NX_CONFIG = {
             "category": "Acción / Shooter / Survival",
             "arch": "ARM64 / WineNX",
             "engine": [
-                "Autorun 4.5"
+                "Autorun 4.5",
+                "DXVK",
+                "FEX"
             ],
             "size": "6.8 GB",
             "language": "es",
@@ -164,7 +166,8 @@ window.NX_CONFIG = {
             "arch": "x86 WineNX",
             "engine": [
                 "Autorun 4.5",
-                "DXVK"
+                "DXVK",
+                "FEX"
             ],
             "size": "12.96 GB",
             "language": "en",
