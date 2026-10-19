@@ -177,7 +177,7 @@ window.NX_CONFIG = {
             "description": "Fork optimizado por NXMasters con configuraciones de memoria ajustadas para Nintendo Switch, soporte para campañas cooperativas y campañas MOD y acceso directo desde el menú Home.",
             "teraboxLink": "https://1024terabox.com/s/12SPXxRBr8ViRxHejhgk76w",
             "patchLink": "",
-            "progress": 95,
+            "progress": 100,
             "showProgress": true,
             "status": "disponible",
             "gdriveLink": "https://drive.google.com/file/d/1E3ryWi-5Jc3HOacJwkwBgSbgkbsSuhpp/view?usp=sharing",
