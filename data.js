@@ -155,7 +155,8 @@ window.NX_CONFIG = {
             "description": "Fork optimizado por NXMasters Team con configuraciones de memoria ajustadas para Nintendo Switch, soporte para  campañas MOD y acceso directo desde el menú Home.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/file/d/1pTGErRYS_iJe5ugts61CL3xehpnAJhnD/view?usp=drive_link",
-            "patchLink": ""
+            "patchLink": "",
+            "enableTerabox": false
         },
         {
             "id": 1,
@@ -179,7 +180,8 @@ window.NX_CONFIG = {
             "progress": 95,
             "showProgress": true,
             "status": "disponible",
-            "gdriveLink": "https://drive.google.com/file/d/1E3ryWi-5Jc3HOacJwkwBgSbgkbsSuhpp/view?usp=sharing"
+            "gdriveLink": "https://drive.google.com/file/d/1E3ryWi-5Jc3HOacJwkwBgSbgkbsSuhpp/view?usp=sharing",
+            "enableTerabox": false
         },
         {
             "id": 4,
