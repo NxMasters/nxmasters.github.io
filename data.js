@@ -226,7 +226,9 @@ window.NX_CONFIG = {
             "description": "Versión ajustada por el equipo con reducción de carga de sombras, partículas optimizadas y parámetros de memoria listos para llegar y pegar en /switch.",
             "teraboxLink": "https://www.terabox.com/s/1nxmasters-gta4-ejemplo",
             "patchLink": "https://www.terabox.com/s/1nxmasters-gta4-parche",
-            "status": "mantenimiento"
+            "status": "proximamente",
+            "showProgress": true,
+            "progress": 50
         }
     ]
 };
