@@ -138,7 +138,7 @@ window.NX_CONFIG = {
             "title": "Asphalt 8 Airborne Nx Version",
             "type": "wrapper",
             "typeLabel": "Wrappers",
-            "category": "Carreras/Accion",
+            "category": "Carreras /Accion",
             "arch": "Armeabi-v7a (32 bits)",
             "engine": [
                 "Android32",
