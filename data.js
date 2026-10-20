@@ -141,7 +141,7 @@ window.NX_CONFIG = {
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
-                "Autorun 4.5"
+                "Autorun 4.5 / Carafe"
             ],
             "size": "2.5 GB ",
             "language": "es",
