@@ -145,7 +145,7 @@ window.NX_CONFIG = {
             ],
             "size": "2.5 GB ",
             "language": "es",
-            "author": "NXMasters Team",
+            "author": "LorEeick & NXMasters Team",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
