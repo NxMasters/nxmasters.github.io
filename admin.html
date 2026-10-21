@@ -309,7 +309,7 @@
         <!-- PANEL CENTRAL -->
         <main class="admin-panel">
 
-            <!-- SECCIÓN 1: JUEGOS, CARÁTULAS Y LINKS TERABOX -->
+            <!-- SECCIÓN 1: JUEGOS, CARÁTULAS Y LINKS TERABOX / GDRIVE / VIKING -->
             <section id="sec-juegos">
                 <div class="panel-header">
                     <h2><i class="fa-solid fa-gamepad" style="color:var(--banner-gold);"></i> Gestor Visual de Juegos, Carátulas y Links</h2>
@@ -318,7 +318,7 @@
                     </button>
                 </div>
                 <p style="color:var(--text-muted);font-size:0.86rem;margin-bottom:1rem;">
-                    Cualquier miembro del Staff puede agregar juegos, subir carátulas desde su PC/celular y pegar sus links directos de <strong>TeraBox</strong>. Al terminar, pulsa el botón dorado <strong>"Publicar Cambios en Vivo (24/7)"</strong> arriba a la derecha.
+                    Cualquier miembro del Staff puede agregar juegos, subir carátulas desde su PC/celular y pegar sus links directos de <strong>TeraBox</strong>, <strong>Google Drive</strong> y <strong>Viking File</strong>. Al terminar, pulsa el botón dorado <strong>"Publicar Cambios en Vivo (24/7)"</strong> arriba a la derecha.
                 </p>
                 <div id="admin-games-list"></div>
             </section>
@@ -591,6 +591,16 @@
                             </div>
                             <input type="url" value="${escapeAttr(g.gdriveLink || '')}" placeholder="https://drive.google.com/file/d/..." oninput="state.games[${idx}].gdriveLink = this.value">
                         </div>
+                        <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableViking !== false) ? 'rgba(234,179,8,0.45)' : 'var(--border)'}; opacity:${(g.enableViking !== false) ? '1' : '0.6'};">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
+                                <label style="margin:0;">🟡 Link Directo de Viking File</label>
+                                <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableViking !== false) ? 'rgba(234,179,8,0.22)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableViking !== false) ? '#fde047' : '#94a3b8'}; border:1px solid ${(g.enableViking !== false) ? 'rgba(250,204,21,0.5)' : 'rgba(255,255,255,0.12)'};">
+                                    <input type="checkbox" ${(g.enableViking !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableViking = this.checked; renderAdminGames();" style="width:auto; accent-color:#eab308;">
+                                    <span>${(g.enableViking !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
+                                </label>
+                            </div>
+                            <input type="url" value="${escapeAttr(g.vikingLink || '')}" placeholder="https://vikingfile.com/..." oninput="state.games[${idx}].vikingLink = this.value">
+                        </div>
                         <div class="field">
                             <label>📦 Link de Parche Extra (Opcional)</label>
                             <input type="url" value="${escapeAttr(g.patchLink || '')}" placeholder="Opcional" oninput="state.games[${idx}].patchLink = this.value">
@@ -686,10 +696,12 @@
                 showProgress: false,
                 enableTerabox: true,
                 enableGdrive: true,
+                enableViking: true,
                 image: "assets/nxmasters_logo.jpg",
                 description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
                 teraboxLink: "https://www.terabox.com/",
                 gdriveLink: "https://drive.google.com/",
+                vikingLink: "https://vikingfile.com/",
                 patchLink: ""
             });
             renderAdminGames();

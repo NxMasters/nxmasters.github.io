@@ -189,8 +189,10 @@ function renderCardActionButton(game) {
     }
     const showTb = game.enableTerabox !== false;
     const showGd = game.enableGdrive !== false;
+    const showVk = game.enableViking !== false;
     const tbUrl = game.teraboxLink || "https://www.terabox.com/";
     const gdUrl = game.gdriveLink || "https://drive.google.com/";
+    const vkUrl = game.vikingLink || "https://vikingfile.com/";
 
     const buttons = [];
     if (showTb) {
@@ -203,6 +205,12 @@ function renderCardActionButton(game) {
         buttons.push(`
             <a href="${gdUrl}" target="_blank" rel="noopener" class="btn-gdrive" title="Descargar directo desde Google Drive">
                 <i class="fa-brands fa-google-drive"></i> GDrive
+            </a>`);
+    }
+    if (showVk) {
+        buttons.push(`
+            <a href="${vkUrl}" target="_blank" rel="noopener" class="btn-viking" title="Descargar directo desde Viking File">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Viking
             </a>`);
     }
     if (buttons.length === 0) {
@@ -299,8 +307,10 @@ function openGameModal(id) {
     const status = game.status || "disponible";
     const showTb = game.enableTerabox !== false;
     const showGd = game.enableGdrive !== false;
+    const showVk = game.enableViking !== false;
     const tbUrl = game.teraboxLink || "https://www.terabox.com/";
     const gdUrl = game.gdriveLink || "https://drive.google.com/";
+    const vkUrl = game.vikingLink || "https://vikingfile.com/";
 
     const modalButtons = [];
     if (showTb) {
@@ -313,6 +323,12 @@ function openGameModal(id) {
         modalButtons.push(`
            <a href="${gdUrl}" target="_blank" rel="noopener" class="btn-gdrive" style="flex:1;padding:0.8rem 1rem;font-size:0.92rem;">
                <i class="fa-brands fa-google-drive"></i> Descargar por GDrive
+           </a>`);
+    }
+    if (showVk) {
+        modalButtons.push(`
+           <a href="${vkUrl}" target="_blank" rel="noopener" class="btn-viking" style="flex:1;padding:0.8rem 1rem;font-size:0.92rem;">
+               <i class="fa-solid fa-cloud-arrow-down"></i> Descargar por Viking File
            </a>`);
     }
     if (modalButtons.length === 0) {
@@ -361,7 +377,7 @@ function openGameModal(id) {
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Arquitectura</span><strong>${game.arch || "N/A"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Entorno / Motor</span><strong>${builds || "Estándar"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Tamaño</span><strong>${game.size || "N/A"}</strong></div>
-            <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Estado</span><strong style="color:${status === 'mantenimiento' ? '#fb923c' : status === 'proximamente' ? '#c084fc' : '#38bdf8'};">${status === 'mantenimiento' ? 'En Mantenimiento' : status === 'proximamente' ? 'Próximamente' : 'TeraBox Directo'}</strong></div>
+            <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Estado</span><strong style="color:${status === 'mantenimiento' ? '#fb923c' : status === 'proximamente' ? '#c084fc' : '#38bdf8'};">${status === 'mantenimiento' ? 'En Mantenimiento' : status === 'proximamente' ? 'Próximamente' : 'Disponible'}</strong></div>
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
