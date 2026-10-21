@@ -31,9 +31,9 @@ window.NX_CONFIG = {
     "subIndices": [
         {
             "id": "todos",
-            "label": "Todos",
+            "label": "Fork Carafe",
             "icon": "fa-layer-group",
-            "color": "#9333ea"
+            "color": "#f33520"
         },
         {
             "id": "recomp",
@@ -64,6 +64,12 @@ window.NX_CONFIG = {
             "label": "En Español",
             "icon": "fa-language",
             "color": "#dc2626"
+        },
+        {
+            "id": "nuevo_7",
+            "label": "Nueva Categoría",
+            "icon": "fa-star",
+            "color": "#0284c7"
         }
     ],
     "guides": [
