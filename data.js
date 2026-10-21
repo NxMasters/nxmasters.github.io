@@ -170,7 +170,7 @@ window.NX_CONFIG = {
         {
             "id": 1792614430419,
             "title": "BRUTAL LEGEND ",
-            "type": "fork",
+            "type": "forkcarafe",
             "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
@@ -196,7 +196,7 @@ window.NX_CONFIG = {
         {
             "id": 1792614246119,
             "title": "I AM ALIVE ",
-            "type": "fork",
+            "type": "forkcarafe",
             "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
@@ -222,7 +222,7 @@ window.NX_CONFIG = {
         {
             "id": 1792611689569,
             "title": "Metal Gear Rising Revengeance",
-            "type": "fork",
+            "type": "forkcarafe",
             "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
@@ -248,8 +248,8 @@ window.NX_CONFIG = {
         {
             "id": 1792505357087,
             "title": "Scarface ",
-            "type": "fork",
-            "typeLabel": "Fork Autorun",
+            "type": "forkcarafe",
+            "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
