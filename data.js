@@ -143,7 +143,8 @@ window.NX_CONFIG = {
             "category": "Acción",
             "arch": "ARM64 / X86",
             "engine": [
-                "Autorun 4.5"
+                "x86",
+                "DXVK"
             ],
             "size": "23 GB",
             "language": "multi",
