@@ -139,11 +139,11 @@ window.NX_CONFIG = {
             "id": 1792614430419,
             "title": "BRUTAL LEGEND ",
             "type": "fork",
-            "typeLabel": "Fork Autorun",
+            "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
-                "Autorun 4.5"
+                "carafe"
             ],
             "size": "8gb",
             "language": "en",
@@ -165,11 +165,11 @@ window.NX_CONFIG = {
             "id": 1792614246119,
             "title": "I AM ALIVE ",
             "type": "fork",
-            "typeLabel": "Fork Autorun",
+            "typeLabel": "Fork Carafe",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
-                "Autorun 4.5"
+                "Carafe"
             ],
             "size": "3gb",
             "language": "en",
