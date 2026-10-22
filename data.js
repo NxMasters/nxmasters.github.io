@@ -160,7 +160,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vikingfile.com/f/sWeYEWZaB2",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792614430419,
@@ -186,7 +188,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://1024terabox.com/s/1t0PzWpwarGR0xYi969v7XQ",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vik1ngfile.site/f/tfzOcVZeDd",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792614246119,
@@ -212,7 +216,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://1024terabox.com/s/1mu2auxJX2vboEgvWmO4TbA",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vik1ngfile.site/f/6ZzqHgOsov",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792611689569,
@@ -238,7 +244,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "http://vikingfile.com/f/BCtoKGpIJf",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792505357087,
@@ -264,7 +272,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://1024terabox.com/s/1lXcBA3Cj0ZedMFXxKi16AQ",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vikingfile.com/",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792375483199,
@@ -292,7 +302,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://1024terabox.com/s/1q5F9AxK4zgcxNJuKlq0_-A",
             "gdriveLink": "https://drive.google.com/file/d/12V1nkqczdgf7U_Aa7Rvu2e7Qjz8wKerr/view?usp=sharing",
             "vikingLink": "https://vikingfile.com/",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1792367069802,
@@ -320,7 +332,9 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/file/d/1pTGErRYS_iJe5ugts61CL3xehpnAJhnD/view?usp=drive_link",
             "vikingLink": "https://vikingfile.com/",
-            "patchLink": ""
+            "patchLink": "",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 1,
@@ -348,7 +362,9 @@ window.NX_CONFIG = {
             "patchLink": "",
             "progress": 100,
             "showProgress": true,
-            "status": "disponible"
+            "status": "disponible",
+            "enableDownloads": true,
+            "downloads": 0
         },
         {
             "id": 4,
@@ -374,7 +390,9 @@ window.NX_CONFIG = {
             "patchLink": "https://www.terabox.com/s/1nxmasters-gta4-parche",
             "status": "proximamente",
             "showProgress": true,
-            "progress": 50
+            "progress": 50,
+            "enableDownloads": true,
+            "downloads": 0
         }
     ]
 };

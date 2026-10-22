@@ -594,6 +594,28 @@ body::before {
     border-radius: 6px;
 }
 
+.spec-downloads {
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.32);
+    color: #7dd3fc;
+    font-weight: 700;
+}
+
+.spec-downloads i {
+    color: var(--terabox-cyan);
+}
+
+@keyframes dl-bump {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.28); color: #fde047; }
+    100% { transform: scale(1); }
+}
+
+.dl-bump {
+    display: inline-block;
+    animation: dl-bump 0.35s ease-out;
+}
+
 .card-actions {
     display: flex;
     align-items: stretch;
