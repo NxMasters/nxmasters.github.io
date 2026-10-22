@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vikingfile.com/f/sWeYEWZaB2",
-            "patchLink": "",
+            "patchLink": "https://www.mediafire.com/file/1l8xk9exfuv2djd/Archivos_Juego_Espa%C3%B1ol_Latino.rar/file?action=check",
             "enableDownloads": true,
             "downloads": 0
         },
