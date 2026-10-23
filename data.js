@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": 1792796543657,
+            "title": "RESIDENT EVIL BUNDLE PACK",
+            "type": "fork",
+            "typeLabel": "Fork  PS2 ",
+            "category": "ACCION , SURVIVAL",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "7.0 GB",
+            "language": "multi",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 95,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/nxmasters_logo.jpg",
+            "description": "CARATULA DISEñADA  POR    DaniUchiha  Mienbro de NXMASTER\nEL JUEGO POR EL MOMENTO SOLO SE PUEDE JUGAR EN EL HOMBREW MENU NO PERMITE ACSESO DIRECTO SE TRABAJA EN ESE DETALLE ",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vikingfile.com/",
+            "patchLink": ""
+        },
+        {
             "id": 1792774585304,
             "title": "RESIDENT EVIL OUTBREAK BUNDLE PACK",
             "type": "fork",
@@ -149,7 +177,7 @@ window.NX_CONFIG = {
             "language": "multi",
             "author": "LordErick & NXMasters Team",
             "status": "disponible",
-            "progress": 90,
+            "progress": 95,
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
