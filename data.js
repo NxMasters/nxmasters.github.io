@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "CARATULA DISEñADA  POR    DaniUchiha  Mienbro de NXMASTER\nEL JUEGO POR EL MOMENTO SOLO SE PUEDE JUGAR EN EL HOMBREW MENU NO PERMITE ACSESO DIRECTO SE TRABAJA EN ESE DETALLE ",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vikingfile.com/",
+            "vikingLink": "https://vik1ngfile.site/f/wqQLnFeNWR",
             "patchLink": ""
         },
         {
