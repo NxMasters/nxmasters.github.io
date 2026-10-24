@@ -136,20 +136,20 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
-            "id": 1792861287770,
+            "id": 1792861474903,
             "title": "The King of Fighters 2002 Unlimited Mod ",
             "type": "fork",
             "typeLabel": "Fork PS2",
-            "category": "PELEAS",
+            "category": "Acción,PELEAS",
             "arch": "ARM64 / WineNX",
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "2 GB",
+            "size": "2.0 GB",
             "language": "en",
             "author": "LordErick/DaniUchiha & NXMasters Team",
             "status": "disponible",
-            "progress": 100,
+            "progress": 95,
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
