@@ -137,7 +137,7 @@ window.NX_CONFIG = {
     "games": [
         {
             "id": 1792897220955,
-            "title": "Halo Ce Online",
+            "title": "Halo CE Online",
             "type": "recomp",
             "typeLabel": "Recomp Estática xbox",
             "category": "Acción / Shooter",
