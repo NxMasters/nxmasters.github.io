@@ -136,12 +136,12 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
-            "id": 1792890163969,
-            "title": "Sonic UnleashedRecompiled",
+            "id": 1792890868793,
+            "title": "sonic unleashedRecompiled",
             "type": "recomp",
             "typeLabel": "Recomp Estática",
-            "category": "Acción / Aventura",
-            "arch": "ARM64 ",
+            "category": "Acción",
+            "arch": "ARM64 / ",
             "engine": [],
             "size": "",
             "language": "es",
