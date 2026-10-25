@@ -141,7 +141,7 @@ window.NX_CONFIG = {
             "type": "port",
             "typeLabel": "Port x360",
             "category": "Acción / Shooter",
-            "arch": "ARM64 / WineNX",
+            "arch": "ARM64 ",
             "engine": [
                 "DXVK"
             ],
