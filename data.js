@@ -141,7 +141,7 @@ window.NX_CONFIG = {
             "type": "recomp",
             "typeLabel": "Recomp Estática xbox",
             "category": "Acción / Shooter",
-            "arch": "ARM64 / ",
+            "arch": "ARM64 ",
             "engine": [
                 "dxvk"
             ],
