@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": 1792898057863,
+            "title": "Nuevo Proyecto NXMasters",
+            "type": "fork",
+            "typeLabel": "Fork Autorun",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": false,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/nxmasters_logo.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vikingfile.com/",
+            "patchLink": ""
+        },
+        {
             "id": 1792897220955,
             "title": "Halo CE Online",
             "type": "recomp",
