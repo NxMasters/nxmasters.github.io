@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "SOLO LOS PRIMEROS 10 SEGUNDOS VA LENTO PERO ES POR EL EMULADOR ",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "Super Mario 3D Land NX MASTER",
+            "vikingLink": "https://vik1ngfile.site/f/0itHdx7VY0",
             "patchLink": ""
         },
         {
