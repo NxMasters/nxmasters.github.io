@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "Utilizar OC Límite sys-clk\nFork inglés con DLC y expansión:\nDesactivar Vsync en opciones y poner gráficos en LOW.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "vikingfile.com/f/F8qs2f4tH4",
+            "vikingLink": "https://vikingfile.com/f/F8qs2f4tH4",
             "patchLink": ""
         },
         {
