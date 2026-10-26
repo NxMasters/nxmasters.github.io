@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1792989694134_rlocet",
+            "title": "POKEMON Y",
+            "type": "fork",
+            "typeLabel": "Fork3DS",
+            "category": "AVENTURA",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2.5 GB",
+            "language": "multi",
+            "author": "LordErick & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1792989703677.jpg",
+            "description": "pequenos tirones en las cargas pero es muy jugable Los juegos de 3DS la pantalla la configuran a su justo presionando más ➕ y menos ➖ al mismo timpo",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/i3w1O47rc1",
+            "patchLink": ""
+        },
+        {
             "id": 1792982551906,
             "title": "Dead Space 3 ",
             "type": "fork",
