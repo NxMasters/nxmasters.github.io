@@ -203,7 +203,7 @@ window.NX_CONFIG = {
             ],
             "size": "500 MB ",
             "language": "multi",
-            "author": "NXMasters Team",
+            "author": "LordErick & NXMasters Team",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
