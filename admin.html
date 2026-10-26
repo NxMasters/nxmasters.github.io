@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Manrope:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
     <style>
         /* PANTALLA DE CANDADO PARA EXTRAÑOS */
         .staff-lock-overlay {
@@ -1724,35 +1725,40 @@
         }
 
         
-        // ================= SEGUIMIENTO DE ADMINISTRADORES CONECTADOS EN VIVO =================
+        // ================= SEGUIMIENTO GLOBAL DE ADMINISTRADORES CONECTADOS EN VIVO =================
         function initAdminPresence() {
             const badgeCount = document.getElementById("admin-presence-count");
             const badgeText = document.getElementById("admin-presence-text");
             if (!badgeCount && !badgeText) return;
 
-            const adminSessionId = "admin_" + Math.random().toString(36).substr(2, 8);
-            const channel = window.BroadcastChannel ? new BroadcastChannel("nxm_admin_presence_room") : null;
-
-            function pingAdminHeartbeat() {
-                const now = Date.now();
-                try {
-                    let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
-                    active[adminSessionId] = { time: now, user: "Tú" };
-                    // Limpiar sesiones inactivas (> 12 segundos)
-                    for (const id in active) {
-                        if (now - active[id].time > 12000) delete active[id];
-                    }
-                    localStorage.setItem("nxm_active_admins", JSON.stringify(active));
-                    updateAdminCountDisplay(Object.keys(active).length);
-                } catch (e) {}
-
-                if (channel) {
-                    channel.postMessage({ type: "ping", sessionId: adminSessionId, time: now });
-                }
+            // Identificador persistente por dispositivo/navegador físico
+            let adminDeviceId = "";
+            try {
+                adminDeviceId = localStorage.getItem("nxm_admin_device_id");
+            } catch (e) {}
+            if (!adminDeviceId) {
+                adminDeviceId = "staff_" + Math.random().toString(36).substr(2, 9);
+                try { localStorage.setItem("nxm_admin_device_id", adminDeviceId); } catch (e) {}
             }
 
-            function updateAdminCountDisplay(count) {
-                const total = Math.max(1, count);
+            const channel = window.BroadcastChannel ? new BroadcastChannel("nxm_admin_presence_room") : null;
+            const activeStaff = {};
+            let mqttClient = null;
+            let isMqttConnected = false;
+            const TOPIC = "nxmasters/staff/presence/v2";
+
+            function updateAdminCountDisplay() {
+                const now = Date.now();
+                activeStaff[adminDeviceId] = now; // Yo siempre activo
+
+                // Limpiar sesiones con más de 10 segundos sin señal
+                for (const id in activeStaff) {
+                    if (now - activeStaff[id] > 10000) {
+                        delete activeStaff[id];
+                    }
+                }
+
+                const total = Math.max(1, Object.keys(activeStaff).length);
                 if (badgeCount) badgeCount.textContent = total;
                 if (badgeText) {
                     if (total === 1) {
@@ -1763,31 +1769,136 @@
                 }
             }
 
-            pingAdminHeartbeat();
-            setInterval(pingAdminHeartbeat, 4000);
+            function broadcastPing(isImmediateReply = false) {
+                const now = Date.now();
+                activeStaff[adminDeviceId] = now;
+                updateAdminCountDisplay();
 
+                // 1. Enviar por MQTT a todos los administradores en el mundo
+                if (mqttClient && isMqttConnected) {
+                    try {
+                        const payload = JSON.stringify({
+                            type: "ping",
+                            id: adminDeviceId,
+                            time: now,
+                            reply: !!isImmediateReply
+                        });
+                        const msg = new Paho.MQTT.Message(payload);
+                        msg.destinationName = TOPIC;
+                        msg.qos = 0;
+                        mqttClient.send(msg);
+                    } catch (e) {}
+                }
+
+                // 2. Enviar por canal local de pestañas
+                if (channel) {
+                    try {
+                        channel.postMessage({ type: "ping", id: adminDeviceId, time: now });
+                    } catch (e) {}
+                }
+            }
+
+            // Conectar al Broker MQTT vía WebSockets seguros (WSS) sobre Internet
+            function setupMQTT() {
+                if (!window.Paho || !window.Paho.MQTT) {
+                    setTimeout(setupMQTT, 1500);
+                    return;
+                }
+
+                try {
+                    const clientId = "nxm_adm_" + adminDeviceId + "_" + Math.random().toString(36).substr(2, 4);
+                    // broker.hivemq.com puerto 8884 WSS (TLS/SSL de alta velocidad)
+                    mqttClient = new Paho.MQTT.Client("broker.hivemq.com", 8884, "/mqtt", clientId);
+
+                    mqttClient.onConnectionLost = (responseObject) => {
+                        isMqttConnected = false;
+                        setTimeout(setupMQTT, 2500 + Math.random() * 2000);
+                    };
+
+                    mqttClient.onMessageArrived = (message) => {
+                        try {
+                            const data = JSON.parse(message.payloadString);
+                            if (!data || !data.id) return;
+
+                            if (data.type === "ping") {
+                                const isNewPeer = !activeStaff[data.id];
+                                activeStaff[data.id] = data.time || Date.now();
+                                updateAdminCountDisplay();
+
+                                // Si un nuevo admin acaba de unirse, responderle al instante para sincronización inmediata
+                                if (isNewPeer && !data.reply && data.id !== adminDeviceId) {
+                                    broadcastPing(true);
+                                }
+                            } else if (data.type === "bye") {
+                                delete activeStaff[data.id];
+                                updateAdminCountDisplay();
+                            }
+                        } catch (e) {}
+                    };
+
+                    // Configurar Last Will and Testament para desconexión limpia si se cierra el navegador
+                    const willMsg = new Paho.MQTT.Message(JSON.stringify({ type: "bye", id: adminDeviceId }));
+                    willMsg.destinationName = TOPIC;
+                    willMsg.qos = 1;
+                    willMsg.retained = false;
+
+                    mqttClient.connect({
+                        useSSL: true,
+                        timeout: 6,
+                        keepAliveInterval: 30,
+                        cleanSession: true,
+                        willMessage: willMsg,
+                        onSuccess: () => {
+                            isMqttConnected = true;
+                            mqttClient.subscribe(TOPIC);
+                            broadcastPing(false);
+                        },
+                        onFailure: () => {
+                            isMqttConnected = false;
+                            setTimeout(setupMQTT, 3000);
+                        }
+                    });
+                } catch (err) {
+                    isMqttConnected = false;
+                    setTimeout(setupMQTT, 4000);
+                }
+            }
+
+            // Escuchar eventos de pestañas locales del mismo navegador
             if (channel) {
                 channel.onmessage = (e) => {
-                    if (e.data && e.data.type === "ping") {
-                        pingAdminHeartbeat();
-                    } else if (e.data && e.data.type === "bye") {
-                        try {
-                            let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
-                            delete active[e.data.sessionId];
-                            localStorage.setItem("nxm_active_admins", JSON.stringify(active));
-                            updateAdminCountDisplay(Object.keys(active).length);
-                        } catch (err) {}
+                    if (e.data && e.data.type === "ping" && e.data.id) {
+                        activeStaff[e.data.id] = e.data.time || Date.now();
+                        updateAdminCountDisplay();
+                    } else if (e.data && e.data.type === "bye" && e.data.id) {
+                        delete activeStaff[e.data.id];
+                        updateAdminCountDisplay();
                     }
                 };
             }
 
+            // Heartbeat recurrente cada 3.2 segundos
+            broadcastPing();
+            setupMQTT();
+            setInterval(() => broadcastPing(false), 3200);
+
+            // Refresco de estado cada 2 segundos
+            setInterval(updateAdminCountDisplay, 2000);
+
+            // Avisar desconexión al salir
             window.addEventListener("beforeunload", () => {
-                try {
-                    let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
-                    delete active[adminSessionId];
-                    localStorage.setItem("nxm_active_admins", JSON.stringify(active));
-                } catch (e) {}
-                if (channel) channel.postMessage({ type: "bye", sessionId: adminSessionId });
+                if (mqttClient && isMqttConnected) {
+                    try {
+                        const bye = new Paho.MQTT.Message(JSON.stringify({ type: "bye", id: adminDeviceId }));
+                        bye.destinationName = TOPIC;
+                        bye.qos = 1;
+                        mqttClient.send(bye);
+                        mqttClient.disconnect();
+                    } catch (e) {}
+                }
+                if (channel) {
+                    try { channel.postMessage({ type: "bye", id: adminDeviceId }); } catch (e) {}
+                }
             });
         }
 
