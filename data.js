@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1792993522473_wdwnql",
+            "title": "POKEMON ULTRA SUN NXMASTERS",
+            "type": "fork",
+            "typeLabel": "Fork 3ds",
+            "category": "AVENTURA",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "4 GB",
+            "language": "multi",
+            "author": "Lord Erick & NXMasters Team",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": false,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1792993530262.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/DR7Zeo7SJY",
+            "patchLink": ""
+        },
+        {
             "id": "1792989694134_rlocet",
             "title": "POKEMON Y",
             "type": "fork",
