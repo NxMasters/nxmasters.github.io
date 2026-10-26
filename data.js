@@ -289,7 +289,7 @@ window.NX_CONFIG = {
             "language": "es",
             "author": "buildeado por Boss Shifu",
             "status": "disponible",
-            "progress": 100,
+            "progress": 62,
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
