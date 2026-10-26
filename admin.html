@@ -234,6 +234,134 @@
             box-shadow: 0 12px 30px rgba(0,0,0,0.6);
             display: none;
         }
+        
+        .admin-presence-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(17, 8, 32, 0.88);
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #fef08a;
+            box-shadow: 0 0 14px rgba(245, 158, 11, 0.22);
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+        .admin-presence-pill:hover {
+            border-color: var(--banner-gold);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            transform: translateY(-1px);
+        }
+        .admin-presence-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse-green 1.8s infinite;
+        }
+
+        /* Sincronización en Tiempo Real & Multi-Admin */
+        .sync-status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            user-select: none;
+        }
+        .sync-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .sync-dot.live {
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse-green 2s infinite;
+        }
+        .sync-dot.dirty {
+            background: #eab308;
+            box-shadow: 0 0 10px #eab308;
+        }
+        .sync-dot.syncing {
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+            animation: pulse-blue 1s infinite;
+        }
+        .sync-dot.conflict {
+            background: #ef4444;
+            box-shadow: 0 0 10px #ef4444;
+            animation: pulse-red 1s infinite;
+        }
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+        @keyframes pulse-blue {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.9); }
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Banner de Actividad Remota (Concurrencia) */
+        .remote-banner {
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.22) 0%, rgba(245, 158, 11, 0.16) 100%);
+            border: 1px solid rgba(234, 179, 8, 0.55);
+            border-radius: 12px;
+            padding: 12px 18px;
+            margin: 12px 20px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            animation: slideDown 0.3s ease-out;
+        }
+        .remote-banner .banner-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: #fef08a;
+        }
+        .remote-banner .banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .local-draft-banner {
+            background: rgba(14, 165, 233, 0.18);
+            border: 1px solid rgba(14, 165, 233, 0.45);
+            border-radius: 12px;
+            padding: 10px 16px;
+            margin: 12px 20px 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.86rem;
+            color: #bae6fd;
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 900px) {
             .admin-layout { grid-template-columns: 1fr; }
             .admin-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
@@ -276,6 +404,18 @@
             </a>
 
             <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;">
+                <div class="admin-presence-pill" id="admin-presence-badge" title="Administradores conectados ahora mismo al panel de control">
+                    <span class="admin-presence-dot"></span>
+                    <i class="fa-solid fa-user-shield" style="color:var(--banner-gold);"></i>
+                    <span id="admin-presence-text"><strong id="admin-presence-count">1</strong> Admin en línea</span>
+                </div>
+                <div class="sync-status-indicator" id="sync-status-badge" title="Estado de sincronización en tiempo real">
+                    <span class="sync-dot live" id="sync-dot-icon"></span>
+                    <span id="sync-status-text">Al día con GitHub</span>
+                </div>
+                <button type="button" class="btn-action btn-soft" id="btn-manual-sync" onclick="manualSyncCheck()" title="Comprobar si otro administrador ha subido cambios">
+                    <i class="fa-solid fa-arrows-rotate" id="sync-refresh-icon"></i> Sincronizar
+                </button>
                 <a href="index.html" target="_blank" class="btn-action btn-soft" style="text-decoration:none;">
                     <i class="fa-solid fa-eye"></i> Ver Página Pública
                 </a>
@@ -285,6 +425,36 @@
             </div>
         </div>
     </header>
+    <!-- BANNERS DE SINCRONIZACIÓN Y BORRADORES MULTI-ADMIN -->
+    <div id="remote-activity-banner" class="remote-banner" style="display:none;">
+        <div class="banner-content">
+            <i class="fa-solid fa-bell fa-bounce" style="color:#f59e0b;font-size:1.15rem;"></i>
+            <div>
+                <strong>¡Atención Staff!</strong> Otro administrador (<span id="remote-author-name">Staff</span>) acaba de publicar cambios en GitHub.
+                <div style="font-size:0.8rem;color:#fef9c3;margin-top:2px;">Tus cambios locales están protegidos. Al pulsar "Publicar", se fusionarán automáticamente sin borrar nada de nadie.</div>
+            </div>
+        </div>
+        <div class="banner-actions">
+            <button type="button" class="btn-action btn-publish" style="padding:0.4rem 0.85rem;font-size:0.8rem;" onclick="syncNowWithRemote(true)">
+                <i class="fa-solid fa-code-merge"></i> Fusionar Novedades Ahora
+            </button>
+            <button type="button" class="btn-action btn-soft" style="padding:0.4rem 0.65rem;font-size:0.8rem;" onclick="dismissRemoteBanner()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="local-draft-banner" class="local-draft-banner" style="display:none;">
+        <div style="display:flex;align-items:center;gap:10px;">
+            <i class="fa-solid fa-clock-rotate-left" style="color:#38bdf8;font-size:1.05rem;"></i>
+            <span>Se recuperó un borrador con cambios sin publicar guardado localmente (<span id="draft-saved-time">hace unos minutos</span>).</span>
+        </div>
+        <div style="display:flex;gap:0.45rem;">
+            <button type="button" class="btn-action btn-soft" style="padding:0.35rem 0.75rem;font-size:0.78rem;" onclick="restoreLocalDraft()">Restaurar Borrador</button>
+            <button type="button" class="btn-action btn-danger" style="padding:0.35rem 0.75rem;font-size:0.78rem;" onclick="discardLocalDraft()">Descartar</button>
+        </div>
+    </div>
+
 
     <div class="admin-layout">
         <!-- MENÚ LATERAL -->
@@ -313,9 +483,14 @@
             <section id="sec-juegos">
                 <div class="panel-header">
                     <h2><i class="fa-solid fa-gamepad" style="color:var(--banner-gold);"></i> Gestor Visual de Juegos, Carátulas y Links</h2>
-                    <button type="button" class="btn-action btn-add" onclick="addNewGame()">
-                        <i class="fa-solid fa-plus"></i> Agregar Nuevo Juego
-                    </button>
+                    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                        <button type="button" class="btn-action btn-soft" onclick="optimizeAllCovers()" title="Convierte carátulas base64 a archivos ligeros en GitHub para acelerar la página">
+                            <i class="fa-solid fa-bolt" style="color:var(--banner-gold);"></i> Optimizar Carátulas
+                        </button>
+                        <button type="button" class="btn-action btn-add" onclick="addNewGame()">
+                            <i class="fa-solid fa-plus"></i> Agregar Nuevo Juego
+                        </button>
+                    </div>
                 </div>
                 <p style="color:var(--text-muted);font-size:0.86rem;margin-bottom:1rem;">
                     Cualquier miembro del Staff puede agregar juegos, subir carátulas desde su PC/celular y pegar sus links directos de <strong>TeraBox</strong>, <strong>Google Drive</strong> y <strong>Viking File</strong>. Al terminar, pulsa el botón dorado <strong>"Publicar Cambios en Vivo (24/7)"</strong> arriba a la derecha.
@@ -372,13 +547,59 @@
 
     <div id="toast" class="status-toast"></div>
 
-    <script src="data.js"></script>
+        <script src="data.js"></script>
     <script>
         // Bóveda cifrada con SHA-256 para que todo el Staff con el link/clave pueda publicar sin exponer el token en texto plano
         const STAFF_VAULT_B64 = "bChvva3HHfh2Hms+kW8psStxq6EmK1y3DITZDQ4qZKNJcjSkvvAt0Q==";
         const DEFAULT_REPO = "NxMasters/nxmasters.github.io";
-        let state = JSON.parse(JSON.stringify(window.NX_CONFIG));
 
+        // ESTADO GLOBAL REACTIVO & CONTROL DE CONCURRENCIA
+        let state = JSON.parse(JSON.stringify(window.NX_CONFIG || { site: {}, subIndices: [], guides: [], team: [], games: [] }));
+        let baseSnapshot = JSON.parse(JSON.stringify(state)); // Instantánea de la última versión conocida de GitHub
+        let lastSyncedSha = null;
+        let isDirty = false;
+        let isSyncing = false;
+        let pollerInterval = null;
+        let autosaveTimer = null;
+
+        // Asegurar que todos los juegos tengan un ID único permanente
+        ensureUniqueIds(state.games);
+        ensureUniqueIds(baseSnapshot.games);
+
+        function ensureUniqueIds(gamesList) {
+            if (!Array.isArray(gamesList)) return;
+            gamesList.forEach((g, i) => {
+                if (!g.id) {
+                    g.id = Date.now() + "_" + i + "_" + Math.random().toString(36).substr(2, 6);
+                }
+            });
+        }
+
+        // ================= UTF-8 BASE64 HELPERS (CERO BUGS DE UNICODE/EMOJIS) =================
+        function utf8ToB64(str) {
+            const bytes = new TextEncoder().encode(str);
+            let binStr = "";
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binStr += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binStr);
+        }
+
+        function b64ToUtf8(str) {
+            try {
+                const binStr = atob(str.replace(/\s/g, ""));
+                const bytes = new Uint8Array(binStr.length);
+                for (let i = 0; i < binStr.length; i++) {
+                    bytes[i] = binStr.charCodeAt(i);
+                }
+                return new TextDecoder().decode(bytes);
+            } catch (e) {
+                return decodeURIComponent(escape(atob(str.replace(/\s/g, ""))));
+            }
+        }
+
+        // ================= AUTENTICACIÓN Y BÓVEDA =================
         async function decryptVault(passphrase) {
             const enc = new TextEncoder();
             const hashBuf = await crypto.subtle.digest("SHA-256", enc.encode(passphrase));
@@ -393,13 +614,14 @@
 
         async function unlockWithStaffPass(customPass) {
             const pass = (customPass || document.getElementById("staff-pass-input").value || "").trim();
-            if (!pass) return;
+            if (!pass) return false;
             try {
                 const candidate = await decryptVault(pass);
                 if (candidate.startsWith("gho_") || candidate.startsWith("ghp_")) {
                     localStorage.setItem("nxm_gh_token", candidate);
                     document.getElementById("staff-lock").style.display = "none";
                     showToast("🔓 Acceso Staff desbloqueado — Ya puedes editar y publicar");
+                    initAdminSession();
                     return true;
                 }
             } catch (e) {}
@@ -407,8 +629,8 @@
             return false;
         }
 
+        // ================= INICIALIZACIÓN DE LA SESIÓN =================
         document.addEventListener("DOMContentLoaded", async () => {
-            // 1. Si el link trae #staff=CLAVE, desbloquea automáticamente para cualquier miembro del Staff
             if (window.location.hash.startsWith("#staff=")) {
                 const staffKey = decodeURIComponent(window.location.hash.replace("#staff=", "").trim());
                 const ok = await unlockWithStaffPass(staffKey);
@@ -427,26 +649,749 @@
                 }
             }
 
-            // Cargar siempre la versión más reciente desde GitHub para que los cambios de otros miembros del Staff aparezcan al instante
-            try {
-                const res = await fetch(`https://api.github.com/repos/${DEFAULT_REPO}/contents/data.js?t=${Date.now()}`, {
-                    headers: { "Accept": "application/vnd.github+json" }
-                });
-                if (res.ok) {
-                    const info = await res.json();
-                    const decoded = decodeURIComponent(escape(atob(info.content.replace(/\s/g, ""))));
-                    const match = decoded.match(/window\.NX_CONFIG\s*=\s*(\{[\s\S]*?\});\s*window\.NX_GAMES/);
-                    if (match && match[1]) {
-                        state = JSON.parse(match[1]);
-                    }
-                }
-            } catch (e) {}
+            await initAdminSession();
+            initAdminPresence();
 
-            renderAllAdmin();
+            // Detección automática de cambios en inputs para activar estado borrador y autosave
+            const panel = document.querySelector(".admin-panel");
+            if (panel) {
+                panel.addEventListener("input", () => markLocalDirty());
+                panel.addEventListener("change", () => markLocalDirty());
+            }
+
+            // Detección al cambiar de pestaña en el navegador para sincronizar al volver
+            document.addEventListener("visibilitychange", () => {
+                if (!document.hidden) {
+                    checkRemoteChanges(false);
+                }
+            });
         });
 
+        async function initAdminSession() {
+            updateSyncStatus("syncing", "Cargando desde GitHub...");
+            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+
+            try {
+                const remote = await fetchRemoteDataJs(token);
+                if (remote && remote.state) {
+                    ensureUniqueIds(remote.state.games);
+                    baseSnapshot = JSON.parse(JSON.stringify(remote.state));
+                    lastSyncedSha = remote.sha;
+
+                    // Comprobar si hay un borrador local no guardado más reciente
+                    const draftRaw = localStorage.getItem("nxm_admin_draft");
+                    if (draftRaw) {
+                        try {
+                            const draftObj = JSON.parse(draftRaw);
+                            if (draftObj && draftObj.state && draftObj.timestamp) {
+                                state = draftObj.state;
+                                ensureUniqueIds(state.games);
+                                markLocalDirty();
+                                showLocalDraftBanner(draftObj.timestamp);
+                                renderAllAdmin();
+                                startRealtimePoller();
+                                return;
+                            }
+                        } catch (e) {}
+                    }
+
+                    state = JSON.parse(JSON.stringify(remote.state));
+                    isDirty = false;
+                    updateSyncStatus("live", "Al día con GitHub");
+                }
+            } catch (err) {
+                console.warn("[Init] Usando datos base locales:", err);
+                updateSyncStatus("dirty", "Modo local / Desconectado");
+            }
+
+            renderAllAdmin();
+            startRealtimePoller();
+        }
+
+        // ================= COMUNICACIÓN ROBUSTA CON GITHUB =================
+        async function fetchRemoteDataJs(token) {
+            const headers = { "Accept": "application/vnd.github+json" };
+            if (token) headers["Authorization"] = `Bearer ${token}`;
+
+            const apiUrl = `https://api.github.com/repos/${DEFAULT_REPO}/contents/data.js?t=${Date.now()}`;
+            const res = await fetch(apiUrl, { headers });
+            if (!res.ok) throw new Error("Error HTTP al obtener data.js: " + res.status);
+            const info = await res.json();
+            const sha = info.sha;
+
+            let text = "";
+            if (info.content) {
+                text = b64ToUtf8(info.content);
+            } else {
+                // Fallback directo por si el archivo superara 1MB
+                const rawRes = await fetch(`https://raw.githubusercontent.com/${DEFAULT_REPO}/main/data.js?t=${Date.now()}`);
+                if (!rawRes.ok) throw new Error("Fallo al descargar raw data.js");
+                text = await rawRes.text();
+            }
+
+            const match = text.match(/window\.NX_CONFIG\s*=\s*(\{[\s\S]*?\});\s*window\.NX_GAMES/);
+            if (!match || !match[1]) throw new Error("No se pudo interpretar NX_CONFIG en data.js");
+            const remoteState = JSON.parse(match[1]);
+            return { state: remoteState, sha, text };
+        }
+
+        // ================= MOTOR DE FUSIÓN SEMÁNTICA 3-WAY (MULTI-ADMIN) =================
+        function smartMergeState(base, local, remote) {
+            if (!base) base = JSON.parse(JSON.stringify(remote || local));
+            if (!remote) return JSON.parse(JSON.stringify(local));
+
+            const merged = JSON.parse(JSON.stringify(remote)); // Punto de partida: versión remota
+
+            // 1. FUSIÓN DE JUEGOS POR ID
+            const baseGames = base.games || [];
+            const localGames = local.games || [];
+            const remoteGames = remote.games || [];
+
+            const baseMap = new Map();
+            baseGames.forEach(g => { if (g.id) baseMap.set(String(g.id), g); });
+
+            const remoteMap = new Map();
+            remoteGames.forEach(g => { if (g.id) remoteMap.set(String(g.id), g); });
+
+            const localMap = new Map();
+            localGames.forEach(g => { if (g.id) localMap.set(String(g.id), g); });
+
+            const mergedGames = [];
+            const processedIds = new Set();
+
+            // A) Procesar juegos locales en su orden actual
+            for (const lGame of localGames) {
+                const id = String(lGame.id);
+                processedIds.add(id);
+
+                if (!baseMap.has(id)) {
+                    // ¡JUEGO NUEVO agregado por este admin! Siempre se conserva
+                    mergedGames.push(JSON.parse(JSON.stringify(lGame)));
+                } else if (!remoteMap.has(id)) {
+                    // Estaba en base pero el otro admin lo borró en remoto
+                    const bGame = baseMap.get(id);
+                    if (JSON.stringify(lGame) !== JSON.stringify(bGame)) {
+                        // Si este admin lo modificó localmente, se conserva
+                        mergedGames.push(JSON.parse(JSON.stringify(lGame)));
+                    }
+                } else {
+                    // Existe tanto en local como en remoto
+                    const rGame = remoteMap.get(id);
+                    const bGame = baseMap.get(id);
+                    const localChanged = JSON.stringify(lGame) !== JSON.stringify(bGame);
+                    const remoteChanged = JSON.stringify(rGame) !== JSON.stringify(bGame);
+
+                    if (localChanged && !remoteChanged) {
+                        mergedGames.push(JSON.parse(JSON.stringify(lGame)));
+                    } else if (!localChanged && remoteChanged) {
+                        mergedGames.push(JSON.parse(JSON.stringify(rGame)));
+                    } else if (!localChanged && !remoteChanged) {
+                        mergedGames.push(JSON.parse(JSON.stringify(lGame)));
+                    } else {
+                        // AMBOS MODIFICARON EL MISMO JUEGO: Fusión a nivel de campos
+                        const fieldMerged = JSON.parse(JSON.stringify(rGame));
+                        for (const key of Object.keys(lGame)) {
+                            if (JSON.stringify(lGame[key]) !== JSON.stringify(bGame[key])) {
+                                fieldMerged[key] = lGame[key];
+                            }
+                        }
+                        mergedGames.push(fieldMerged);
+                    }
+                }
+            }
+
+            // B) Incorporar juegos NUEVOS agregados por el otro admin en remoto
+            for (const rGame of remoteGames) {
+                const id = String(rGame.id);
+                if (!processedIds.has(id)) {
+                    processedIds.add(id);
+                    if (!baseMap.has(id)) {
+                        // ¡El otro admin agregó este juego! Lo añadimos al inicio
+                        mergedGames.unshift(JSON.parse(JSON.stringify(rGame)));
+                    }
+                }
+            }
+
+            merged.games = mergedGames;
+
+            // 2. FUSIÓN DE SUB-ÍNDICES POR ID
+            const subMap = new Map();
+            (remote.subIndices || []).forEach(s => subMap.set(s.id, s));
+            (local.subIndices || []).forEach(s => subMap.set(s.id, s));
+            merged.subIndices = Array.from(subMap.values());
+
+            // 3. FUSIÓN DE SITIO, GUÍAS Y EQUIPO
+            merged.site = Object.assign({}, remote.site || {}, local.site || {});
+            if (base.site && local.site) {
+                for (const k of Object.keys(local.site)) {
+                    if (JSON.stringify(local.site[k]) !== JSON.stringify(base.site[k])) {
+                        merged.site[k] = local.site[k];
+                    }
+                }
+            }
+
+            return merged;
+        }
+
+        // ================= POLLING EN TIEMPO REAL (CADA 15 SEGUNDOS) =================
+        function startRealtimePoller() {
+            if (pollerInterval) clearInterval(pollerInterval);
+            pollerInterval = setInterval(() => {
+                checkRemoteChanges(false);
+            }, 15000);
+        }
+
+        async function checkRemoteChanges(isManual = false) {
+            if (isSyncing) return;
+            isSyncing = true;
+            if (isManual) {
+                const icon = document.getElementById("sync-refresh-icon");
+                if (icon) icon.classList.add("fa-spin");
+                updateSyncStatus("syncing", "Comprobando GitHub...");
+            }
+
+            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+            const headers = { "Accept": "application/vnd.github+json" };
+            if (token) headers["Authorization"] = `Bearer ${token}`;
+
+            try {
+                // Consultar el último commit en data.js (consume solo ~1KB de ancho de banda)
+                const commitUrl = `https://api.github.com/repos/${DEFAULT_REPO}/commits?path=data.js&page=1&per_page=1&t=${Date.now()}`;
+                const res = await fetch(commitUrl, { headers });
+                if (res.ok) {
+                    const commits = await res.json();
+                    if (Array.isArray(commits) && commits.length > 0) {
+                        const latestCommit = commits[0];
+                        const latestSha = latestCommit.sha;
+                        const author = latestCommit.commit?.author?.name || latestCommit.author?.login || "Staff";
+
+                        if (lastSyncedSha && latestSha !== lastSyncedSha) {
+                            // ¡HAY CAMBIOS REMOTOS!
+                            if (!isDirty) {
+                                // El admin actual no tiene cambios pendientes: Sincronización transparente
+                                const remote = await fetchRemoteDataJs(token);
+                                if (remote && remote.state) {
+                                    ensureUniqueIds(remote.state.games);
+                                    state = JSON.parse(JSON.stringify(remote.state));
+                                    baseSnapshot = JSON.parse(JSON.stringify(remote.state));
+                                    lastSyncedSha = latestSha;
+                                    renderAllAdmin();
+                                    updateSyncStatus("live", `Actualizado (${author})`);
+                                    showToast(`🔄 Catálogo actualizado en vivo con cambios de ${author}`);
+                                }
+                            } else {
+                                // El admin actual tiene cambios pendientes: Mostrar banner de fusión amigable
+                                updateSyncStatus("conflict", "Novedades de otro admin disponibles");
+                                showRemoteBanner(author);
+                            }
+                        } else {
+                            if (!isDirty) updateSyncStatus("live", "Al día con GitHub");
+                            if (isManual) showToast("✨ Todo al día. Tienes la versión más reciente.");
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn("[Poller] Error al comprobar cambios remotos:", err);
+            } finally {
+                isSyncing = false;
+                const icon = document.getElementById("sync-refresh-icon");
+                if (icon) icon.classList.remove("fa-spin");
+            }
+        }
+
+        async function manualSyncCheck() {
+            await checkRemoteChanges(true);
+        }
+
+        async function syncNowWithRemote(userTriggered = false) {
+            updateSyncStatus("syncing", "Fusionando cambios...");
+            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+            try {
+                const remote = await fetchRemoteDataJs(token);
+                if (remote && remote.state) {
+                    ensureUniqueIds(remote.state.games);
+                    const mergedState = smartMergeState(baseSnapshot, state, remote.state);
+                    state = mergedState;
+                    baseSnapshot = JSON.parse(JSON.stringify(remote.state));
+                    lastSyncedSha = remote.sha;
+                    dismissRemoteBanner();
+                    renderAllAdmin();
+                    markLocalDirty();
+                    updateSyncStatus("dirty", "Cambios fusionados (Pendiente de publicar)");
+                    showToast("✅ Novedades combinadas exitosamente. Pulsa 'Publicar' para confirmar.");
+                }
+            } catch (err) {
+                console.error("[SyncNow] Error:", err);
+                showToast("❌ No se pudieron obtener los cambios remotos.", true);
+            }
+        }
+
+        function showRemoteBanner(author) {
+            const b = document.getElementById("remote-activity-banner");
+            const a = document.getElementById("remote-author-name");
+            if (a) a.textContent = author;
+            if (b) b.style.display = "flex";
+        }
+
+        function dismissRemoteBanner() {
+            const b = document.getElementById("remote-activity-banner");
+            if (b) b.style.display = "none";
+        }
+
+        // ================= BORRADORES LOCALES & AUTORRECUPERACIÓN =================
+        function markLocalDirty() {
+            isDirty = true;
+            updateSyncStatus("dirty", "Cambios locales sin publicar");
+            scheduleAutosaveDraft();
+        }
+
+        function scheduleAutosaveDraft() {
+            if (autosaveTimer) clearTimeout(autosaveTimer);
+            autosaveTimer = setTimeout(() => {
+                try {
+                    localStorage.setItem("nxm_admin_draft", JSON.stringify({
+                        state,
+                        timestamp: Date.now()
+                    }));
+                } catch (e) {}
+            }, 1000);
+        }
+
+        function clearLocalDraft() {
+            isDirty = false;
+            localStorage.removeItem("nxm_admin_draft");
+            const b = document.getElementById("local-draft-banner");
+            if (b) b.style.display = "none";
+        }
+
+        function showLocalDraftBanner(timestamp) {
+            const b = document.getElementById("local-draft-banner");
+            const t = document.getElementById("draft-saved-time");
+            if (b && t) {
+                const mins = Math.max(1, Math.round((Date.now() - timestamp) / 60000));
+                t.textContent = mins === 1 ? "hace 1 minuto" : `hace ${mins} minutos`;
+                b.style.display = "flex";
+            }
+        }
+
+        function restoreLocalDraft() {
+            const draftRaw = localStorage.getItem("nxm_admin_draft");
+            if (draftRaw) {
+                try {
+                    const draftObj = JSON.parse(draftRaw);
+                    state = draftObj.state;
+                    ensureUniqueIds(state.games);
+                    renderAllAdmin();
+                    markLocalDirty();
+                    showToast("📌 Borrador local restaurado con éxito.");
+                } catch (e) {}
+            }
+            const b = document.getElementById("local-draft-banner");
+            if (b) b.style.display = "none";
+        }
+
+        function discardLocalDraft() {
+            clearLocalDraft();
+            state = JSON.parse(JSON.stringify(baseSnapshot));
+            renderAllAdmin();
+            updateSyncStatus("live", "Al día con GitHub");
+            showToast("🗑️ Borrador descartado. Se restableció la versión de GitHub.");
+        }
+
+        function updateSyncStatus(type, text) {
+            const dot = document.getElementById("sync-dot-icon");
+            const label = document.getElementById("sync-status-text");
+            if (dot) dot.className = `sync-dot ${type}`;
+            if (label) label.textContent = text;
+        }
+
+        // ================= PUBLICACIÓN 24/7 ROBUSTA CON REINTENTOS =================
+        function buildDataJsString(targetState) {
+            const s = targetState || state;
+            return `/**\n * CONFIGURACIÓN GENERADA POR NXMASTERS STUDIO\n */\nwindow.NX_CONFIG = ${JSON.stringify(s, null, 4)};\nwindow.NX_GAMES = window.NX_CONFIG.games;\nwindow.NX_TEAM = window.NX_CONFIG.team;\n`;
+        }
+
+        async function publishToGitHub() {
+            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+            if (!token) {
+                document.getElementById("staff-lock").style.display = "flex";
+                showToast("🔒 Ingresa primero la clave del Staff", true);
+                return;
+            }
+
+            const btn = document.getElementById("btn-save-cloud");
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Publicando y sincronizando...`;
+            btn.disabled = true;
+            updateSyncStatus("syncing", "Publicando en GitHub...");
+
+            const maxRetries = 3;
+            let attempt = 0;
+            let success = false;
+            let lastError = null;
+
+            while (attempt < maxRetries && !success) {
+                attempt++;
+                try {
+                    // 1. Obtener el estado remoto más fresco de GitHub para garantizar que ningún cambio ajeno se pierda
+                    const apiUrl = `https://api.github.com/repos/${DEFAULT_REPO}/contents/data.js?t=${Date.now()}`;
+                    const getRes = await fetch(apiUrl, {
+                        headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github+json" }
+                    });
+                    if (!getRes.ok) throw new Error("Fallo al consultar data.js en GitHub: " + getRes.status);
+                    const info = await getRes.json();
+                    const latestSha = info.sha;
+
+                    let remoteText = "";
+                    if (info.content) {
+                        remoteText = b64ToUtf8(info.content);
+                    } else {
+                        const rawRes = await fetch(`https://raw.githubusercontent.com/${DEFAULT_REPO}/main/data.js?t=${Date.now()}`);
+                        remoteText = await rawRes.text();
+                    }
+
+                    const match = remoteText.match(/window\.NX_CONFIG\s*=\s*(\{[\s\S]*?\});\s*window\.NX_GAMES/);
+                    const remoteState = match && match[1] ? JSON.parse(match[1]) : null;
+
+                    // 2. Fusión semántica inteligente en caliente
+                    const mergedState = smartMergeState(baseSnapshot, state, remoteState);
+
+                    // 3. Serializar y codificar en UTF-8 seguro
+                    const contentUtf8 = buildDataJsString(mergedState);
+                    const base64Content = utf8ToB64(contentUtf8);
+
+                    // 4. Guardar commit en GitHub
+                    const putRes = await fetch(apiUrl, {
+                        method: "PUT",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                            "Accept": "application/vnd.github+json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            message: "Update catalog via NXMASTERS Staff Studio (Multi-Admin Sync)",
+                            content: base64Content,
+                            sha: latestSha,
+                            branch: "main"
+                        })
+                    });
+
+                    if (putRes.status === 409) {
+                        console.warn(`[Publish] 409 Conflict en intento ${attempt}. Reintentando con fusión automática...`);
+                        await new Promise(r => setTimeout(r, 600 * attempt));
+                        continue;
+                    }
+
+                    if (!putRes.ok) {
+                        const errText = await putRes.text();
+                        throw new Error(errText);
+                    }
+
+                    // ¡Éxito absoluto!
+                    const putData = await putRes.json();
+                    lastSyncedSha = putData.commit?.sha || latestSha;
+                    state = mergedState;
+                    baseSnapshot = JSON.parse(JSON.stringify(mergedState));
+                    clearLocalDraft();
+                    renderAllAdmin();
+                    updateSyncStatus("live", "Publicado y sincronizado");
+                    dismissRemoteBanner();
+                    showToast("✅ ¡Publicado en vivo! Tus cambios se fusionaron perfectamente con los del Staff.");
+                    success = true;
+                } catch (err) {
+                    console.error(`[Publish] Intento ${attempt} fallido:`, err);
+                    lastError = err;
+                    await new Promise(r => setTimeout(r, 700 * attempt));
+                }
+            }
+
+            if (!success) {
+                showToast("❌ Error al publicar: " + (lastError ? lastError.message : "Comprueba tu conexión"), true);
+                updateSyncStatus("dirty", "Error al publicar (Reintentar)");
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        // ================= SUBIDA DIRECTA DE CARÁTULAS (LIGERA & CERO CONGELAMIENTOS) =================
+        function handleCoverUpload(idx, inputEl, mode = "cover") {
+            const file = inputEl.files && inputEl.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = async () => {
+                    const TARGET_W = 480;
+                    const TARGET_H = 720;
+                    const canvas = document.createElement("canvas");
+                    canvas.width = TARGET_W;
+                    canvas.height = TARGET_H;
+                    const ctx = canvas.getContext("2d");
+
+                    const bgScale = Math.max(TARGET_W / img.width, TARGET_H / img.height);
+                    const bgW = img.width * bgScale;
+                    const bgH = img.height * bgScale;
+                    const bgX = (TARGET_W - bgW) / 2;
+                    const bgY = (TARGET_H - bgH) / 2;
+
+                    if (mode === "blur-fit") {
+                        ctx.save();
+                        ctx.filter = "blur(20px) brightness(0.55)";
+                        ctx.drawImage(img, bgX - 20, bgY - 20, bgW + 40, bgH + 40);
+                        ctx.restore();
+
+                        const fitScale = Math.min(TARGET_W / img.width, TARGET_H / img.height);
+                        const fgW = img.width * fitScale;
+                        const fgH = img.height * fitScale;
+                        const fgX = (TARGET_W - fgW) / 2;
+                        const fgY = (TARGET_H - fgY) / 2;
+                        ctx.drawImage(img, fgX, fgY, fgW, fgH);
+                    } else {
+                        ctx.imageSmoothingEnabled = true;
+                        ctx.imageSmoothingQuality = "high";
+                        ctx.drawImage(img, bgX, bgY, bgW, bgH);
+                    }
+
+                    const dataUrl = canvas.toDataURL("image/jpeg", 0.85);
+                    const previewImg = document.getElementById(`preview-img-${idx}`);
+                    const inputVal = document.getElementById(`img-input-${idx}`);
+                    if (previewImg) previewImg.src = dataUrl;
+
+                    const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+                    if (token) {
+                        showToast("☁️ Subiendo carátula directamente a GitHub Assets...");
+                        const cleanTitle = (state.games[idx].title || "cover")
+                            .toLowerCase()
+                            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                            .replace(/[^a-z0-9]+/g, "_")
+                            .replace(/^_+|_+$/g, "")
+                            .slice(0, 24);
+                        const filename = `cover_${cleanTitle || 'game'}_${Date.now()}.jpg`;
+                        const filePath = `assets/covers/${filename}`;
+                        const base64Data = dataUrl.split(",")[1];
+
+                        try {
+                            const upRes = await fetch(`https://api.github.com/repos/${DEFAULT_REPO}/contents/${filePath}`, {
+                                method: "PUT",
+                                headers: {
+                                    "Authorization": `Bearer ${token}`,
+                                    "Accept": "application/vnd.github+json",
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    message: `Upload cover: ${filename}`,
+                                    content: base64Data,
+                                    branch: "main"
+                                })
+                            });
+                            if (upRes.ok) {
+                                state.games[idx].image = filePath;
+                                if (inputVal) inputVal.value = filePath;
+                                markLocalDirty();
+                                showToast("✅ Carátula subida como archivo a GitHub (Rápida y Ligera)");
+                                return;
+                            }
+                        } catch (upErr) {
+                            console.warn("Fallo subida a GitHub Assets, usando local:", upErr);
+                        }
+                    }
+
+                    state.games[idx].image = dataUrl;
+                    if (inputVal) inputVal.value = dataUrl;
+                    markLocalDirty();
+                    showToast("🖼️ Carátula auto-redimensionada a 480x720 (2:3)");
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ================= HERRAMIENTA: OPTIMIZACIÓN MASIVA DE CARÁTULAS =================
+        async function optimizeAllCovers() {
+            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
+            if (!token) {
+                showToast("🔒 Ingresa primero la clave de Staff para optimizar en GitHub", true);
+                return;
+            }
+
+            const unoptimized = (state.games || []).filter(g => (g.image || "").startsWith("data:image"));
+            if (unoptimized.length === 0) {
+                showToast("✨ ¡Todas las carátulas ya son archivos ligeros optimizados!");
+                return;
+            }
+
+            if (!confirm(`Se encontraron ${unoptimized.length} carátulas pesadas en Base64. ¿Convertirlas en archivos independientes en GitHub para que la página cargue 100 veces más rápido?`)) return;
+
+            showToast(`⚡ Optimizando ${unoptimized.length} carátulas... Por favor espera.`);
+            let count = 0;
+
+            for (let i = 0; i < state.games.length; i++) {
+                const g = state.games[i];
+                if ((g.image || "").startsWith("data:image")) {
+                    const cleanTitle = (g.title || "cover")
+                        .toLowerCase()
+                        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                        .replace(/[^a-z0-9]+/g, "_")
+                        .replace(/^_+|_+$/g, "")
+                        .slice(0, 24);
+                    const filename = `cover_${cleanTitle || 'game'}_${Date.now()}_${i}.jpg`;
+                    const filePath = `assets/covers/${filename}`;
+                    const base64Data = g.image.split(",")[1];
+
+                    try {
+                        const res = await fetch(`https://api.github.com/repos/${DEFAULT_REPO}/contents/${filePath}`, {
+                            method: "PUT",
+                            headers: {
+                                "Authorization": `Bearer ${token}`,
+                                "Accept": "application/vnd.github+json",
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                message: `Optimize cover: ${filename}`,
+                                content: base64Data,
+                                branch: "main"
+                            })
+                        });
+                        if (res.ok) {
+                            g.image = filePath;
+                            count++;
+                        }
+                    } catch (e) {
+                        console.error("Error optimizando:", g.title, e);
+                    }
+                }
+            }
+
+            renderAdminGames();
+            markLocalDirty();
+            showToast(`🎉 ¡${count} carátulas convertidas a archivos! Pulsa 'Publicar' para guardar.`);
+        }
+
+        // ================= OPERACIONES DE JUEGOS =================
+        function addNewGame() {
+            state.games.unshift({
+                id: Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+                title: "Nuevo Proyecto NXMasters",
+                type: "fork",
+                typeLabel: "Fork Autorun",
+                category: "Acción",
+                arch: "ARM64 / WineNX",
+                engine: ["Autorun 4.5"],
+                size: "1.0 GB",
+                language: "es",
+                author: "NXMasters Team",
+                status: "disponible",
+                progress: 50,
+                showProgress: false,
+                enableTerabox: true,
+                enableGdrive: true,
+                enableViking: true,
+                enableDownloads: true,
+                downloads: 0,
+                image: "assets/nxmasters_logo.jpg",
+                description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+                teraboxLink: "https://www.terabox.com/",
+                gdriveLink: "https://drive.google.com/",
+                vikingLink: "https://vikingfile.com/",
+                patchLink: ""
+            });
+            markLocalDirty();
+            renderAdminGames();
+            showToast("✨ Juego agregado al inicio de la lista");
+        }
+
+        function deleteGame(idx) {
+            if (!confirm(`¿Eliminar "${state.games[idx].title}"?`)) return;
+            state.games.splice(idx, 1);
+            markLocalDirty();
+            renderAdminGames();
+        }
+
+        function moveGame(idx, dir) {
+            const target = idx + dir;
+            if (target < 0 || target >= state.games.length) return;
+            const temp = state.games[idx];
+            state.games[idx] = state.games[target];
+            state.games[target] = temp;
+            markLocalDirty();
+            renderAdminGames();
+        }
+
+        function updateGameStatus(idx, newStatus) {
+            state.games[idx].status = newStatus;
+            if (newStatus === 'proximamente') {
+                state.games[idx].showProgress = true;
+                if (typeof state.games[idx].progress !== 'number') {
+                    state.games[idx].progress = 50;
+                }
+            } else if (newStatus === 'disponible') {
+                state.games[idx].showProgress = false;
+            }
+            markLocalDirty();
+            renderAdminGames();
+        }
+
+        function toggleGameProgress(idx, checked) {
+            state.games[idx].showProgress = checked;
+            if (checked && typeof state.games[idx].progress !== 'number') {
+                state.games[idx].progress = 50;
+            }
+            markLocalDirty();
+        }
+
+        function updateGameProgress(idx, rawVal) {
+            const pct = Math.max(0, Math.min(100, Number(rawVal) || 0));
+            state.games[idx].progress = pct;
+            state.games[idx].showProgress = true;
+            const style = getAdminProgressStyle(pct);
+            const badge = document.getElementById(`prog-badge-${idx}`);
+            const fill = document.getElementById(`prog-fill-${idx}`);
+            const num = document.getElementById(`prog-num-${idx}`);
+            if (badge) {
+                badge.textContent = `${pct}%`;
+                badge.style.color = style.color;
+            }
+            if (fill) {
+                fill.style.width = `${pct}%`;
+                fill.style.background = style.background;
+                fill.style.boxShadow = style.shadow;
+            }
+            if (num && document.activeElement !== num) {
+                num.value = pct;
+            }
+            markLocalDirty();
+        }
+
+        function updateGameType(idx, newType) {
+            state.games[idx].type = newType;
+            const sub = (state.subIndices || []).find(s => s.id === newType);
+            if (sub) state.games[idx].typeLabel = sub.label;
+            markLocalDirty();
+            renderAdminGames();
+        }
+
+        function getAdminProgressStyle(pctInput) {
+            const pct = Math.max(0, Math.min(100, Number(pctInput) || 0));
+            const hue = pct <= 50
+                ? Math.round((pct / 50) * 48)
+                : Math.round(48 + ((pct - 50) / 50) * 84);
+            const hueStart = Math.max(0, hue - 14);
+            const color = `hsl(${hue}, 92%, 52%)`;
+            const colorStart = `hsl(${hueStart}, 92%, 44%)`;
+            return {
+                pct,
+                color,
+                background: `linear-gradient(90deg, ${colorStart} 0%, ${color} 100%)`,
+                shadow: `0 0 12px hsla(${hue}, 92%, 52%, 0.45)`
+            };
+        }
+
+        // ================= INTERFAZ Y RENDERERS =================
         function showToast(msg, isError = false) {
             const t = document.getElementById("toast");
+            if (!t) return;
             t.style.background = isError ? "#dc2626" : "#16a34a";
             t.textContent = msg;
             t.style.display = "block";
@@ -455,7 +1400,8 @@
 
         function showAdminSection(sec) {
             ["juegos", "subindices", "pagina", "guias", "team"].forEach(s => {
-                document.getElementById(`sec-${s}`).classList.toggle("hidden", s !== sec);
+                const el = document.getElementById(`sec-${s}`);
+                if (el) el.classList.toggle("hidden", s !== sec);
             });
             document.querySelectorAll(".admin-sidebar .side-btn").forEach(b => {
                 b.classList.toggle("active", b.dataset.sec === sec);
@@ -470,9 +1416,9 @@
             renderAdminTeam();
         }
 
-        // ================= 1. JUEGOS =================
         function renderAdminGames() {
             const container = document.getElementById("admin-games-list");
+            if (!container) return;
             const subOptions = (state.subIndices || []).filter(s => s.id !== "todos" && s.id !== "espanol");
 
             container.innerHTML = (state.games || []).map((g, idx) => `
@@ -531,7 +1477,7 @@
                         </div>
                         <div class="field">
                             <label>Idioma</label>
-                            <select onchange="state.games[${idx}].language = this.value">
+                            <select onchange="state.games[${idx}].language = this.value; markLocalDirty();">
                                 <option value="es" ${g.language === 'es' ? 'selected' : ''}>Español</option>
                                 <option value="multi" ${g.language === 'multi' ? 'selected' : ''}>Multilenguaje</option>
                                 <option value="en" ${g.language === 'en' ? 'selected' : ''}>Inglés</option>
@@ -568,14 +1514,14 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label>URL de Carátula (Se auto-ajusta sola al marco 2:3)</label>
+                            <label>URL o Ruta de Carátula (2:3)</label>
                             <input type="text" id="img-input-${idx}" value="${escapeAttr(g.image)}" oninput="state.games[${idx}].image = this.value; document.getElementById('preview-img-${idx}').src = this.value">
                         </div>
                         <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableTerabox !== false) ? 'rgba(56,189,248,0.4)' : 'var(--border)'}; opacity:${(g.enableTerabox !== false) ? '1' : '0.6'};">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                                 <label style="margin:0;">☁️ Link Directo de TeraBox</label>
                                 <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableTerabox !== false) ? 'rgba(2,132,199,0.25)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableTerabox !== false) ? '#38bdf8' : '#94a3b8'}; border:1px solid ${(g.enableTerabox !== false) ? 'rgba(56,189,248,0.5)' : 'rgba(255,255,255,0.12)'};">
-                                    <input type="checkbox" ${(g.enableTerabox !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableTerabox = this.checked; renderAdminGames();" style="width:auto; accent-color:#0284c7;">
+                                    <input type="checkbox" ${(g.enableTerabox !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableTerabox = this.checked; renderAdminGames(); markLocalDirty();" style="width:auto; accent-color:#0284c7;">
                                     <span>${(g.enableTerabox !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
@@ -585,7 +1531,7 @@
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                                 <label style="margin:0;">🟢 Link Directo de Google Drive (GDrive)</label>
                                 <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableGdrive !== false) ? 'rgba(16,185,129,0.22)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableGdrive !== false) ? '#34d399' : '#94a3b8'}; border:1px solid ${(g.enableGdrive !== false) ? 'rgba(52,211,153,0.5)' : 'rgba(255,255,255,0.12)'};">
-                                    <input type="checkbox" ${(g.enableGdrive !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableGdrive = this.checked; renderAdminGames();" style="width:auto; accent-color:#10b981;">
+                                    <input type="checkbox" ${(g.enableGdrive !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableGdrive = this.checked; renderAdminGames(); markLocalDirty();" style="width:auto; accent-color:#10b981;">
                                     <span>${(g.enableGdrive !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
@@ -595,7 +1541,7 @@
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                                 <label style="margin:0;">🟡 Link Directo de Viking File</label>
                                 <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableViking !== false) ? 'rgba(234,179,8,0.22)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableViking !== false) ? '#fde047' : '#94a3b8'}; border:1px solid ${(g.enableViking !== false) ? 'rgba(250,204,21,0.5)' : 'rgba(255,255,255,0.12)'};">
-                                    <input type="checkbox" ${(g.enableViking !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableViking = this.checked; renderAdminGames();" style="width:auto; accent-color:#eab308;">
+                                    <input type="checkbox" ${(g.enableViking !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableViking = this.checked; renderAdminGames(); markLocalDirty();" style="width:auto; accent-color:#eab308;">
                                     <span>${(g.enableViking !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
@@ -609,7 +1555,7 @@
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
                                 <label style="margin:0;"><i class="fa-solid fa-chart-simple" style="color:var(--banner-gold);"></i> Contador de Descargas (+1 al Clic)</label>
                                 <label style="margin:0; display:inline-flex; align-items:center; gap:6px; cursor:pointer; font-size:0.76rem; padding:3px 9px; border-radius:999px; background:${(g.enableDownloads !== false) ? 'rgba(2,132,199,0.25)' : 'rgba(255,255,255,0.06)'}; color:${(g.enableDownloads !== false) ? '#38bdf8' : '#94a3b8'}; border:1px solid ${(g.enableDownloads !== false) ? 'rgba(56,189,248,0.5)' : 'rgba(255,255,255,0.12)'};">
-                                    <input type="checkbox" ${(g.enableDownloads !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableDownloads = this.checked; renderAdminGames();" style="width:auto; accent-color:#0284c7;">
+                                    <input type="checkbox" ${(g.enableDownloads !== false) ? 'checked' : ''} onchange="state.games[${idx}].enableDownloads = this.checked; renderAdminGames(); markLocalDirty();" style="width:auto; accent-color:#0284c7;">
                                     <span>${(g.enableDownloads !== false) ? '🟢 Contador PRENDIDO' : '⚫ Contador APAGADO'}</span>
                                 </label>
                             </div>
@@ -627,254 +1573,69 @@
             `).join("");
         }
 
-        function getAdminProgressStyle(pctInput) {
-            const pct = Math.max(0, Math.min(100, Number(pctInput) || 0));
-            const hue = pct <= 50
-                ? Math.round((pct / 50) * 48)
-                : Math.round(48 + ((pct - 50) / 50) * 84);
-            const hueStart = Math.max(0, hue - 14);
-            const color = `hsl(${hue}, 92%, 52%)`;
-            const colorStart = `hsl(${hueStart}, 92%, 44%)`;
-            return {
-                pct,
-                color,
-                background: `linear-gradient(90deg, ${colorStart} 0%, ${color} 100%)`,
-                shadow: `0 0 12px hsla(${hue}, 92%, 52%, 0.45)`
-            };
-        }
-
-        function updateGameStatus(idx, newStatus) {
-            state.games[idx].status = newStatus;
-            if (newStatus === 'proximamente') {
-                state.games[idx].showProgress = true;
-                if (typeof state.games[idx].progress !== 'number') {
-                    state.games[idx].progress = 50;
-                }
-            } else if (newStatus === 'disponible') {
-                state.games[idx].showProgress = false;
-            }
-            renderAdminGames();
-        }
-
-        function toggleGameProgress(idx, checked) {
-            state.games[idx].showProgress = checked;
-            if (checked && typeof state.games[idx].progress !== 'number') {
-                state.games[idx].progress = 50;
-            }
-        }
-
-        function updateGameProgress(idx, rawVal) {
-            const pct = Math.max(0, Math.min(100, Number(rawVal) || 0));
-            state.games[idx].progress = pct;
-            state.games[idx].showProgress = true;
-            const style = getAdminProgressStyle(pct);
-            const badge = document.getElementById(`prog-badge-${idx}`);
-            const fill = document.getElementById(`prog-fill-${idx}`);
-            const num = document.getElementById(`prog-num-${idx}`);
-            if (badge) {
-                badge.textContent = `${pct}%`;
-                badge.style.color = style.color;
-            }
-            if (fill) {
-                fill.style.width = `${pct}%`;
-                fill.style.background = style.background;
-                fill.style.boxShadow = style.shadow;
-            }
-            if (num && document.activeElement !== num) {
-                num.value = pct;
-            }
-        }
-
-        function updateGameType(idx, newType) {
-            state.games[idx].type = newType;
-            const sub = (state.subIndices || []).find(s => s.id === newType);
-            if (sub) state.games[idx].typeLabel = sub.label;
-            renderAdminGames();
-        }
-
-        function addNewGame() {
-            state.games.unshift({
-                id: Date.now(),
-                title: "Nuevo Proyecto NXMasters",
-                type: "fork",
-                typeLabel: "Fork Autorun",
-                category: "Acción",
-                arch: "ARM64 / WineNX",
-                engine: ["Autorun 4.5"],
-                size: "1.0 GB",
-                language: "es",
-                author: "NXMasters Team",
-                status: "disponible",
-                progress: 50,
-                showProgress: false,
-                enableTerabox: true,
-                enableGdrive: true,
-                enableViking: true,
-                enableDownloads: true,
-                downloads: 0,
-                image: "assets/nxmasters_logo.jpg",
-                description: "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
-                teraboxLink: "https://www.terabox.com/",
-                gdriveLink: "https://drive.google.com/",
-                vikingLink: "https://vikingfile.com/",
-                patchLink: ""
-            });
-            renderAdminGames();
-            showToast("✨ Juego agregado al inicio de la lista");
-        }
-
-        function deleteGame(idx) {
-            if (!confirm(`¿Eliminar "${state.games[idx].title}"?`)) return;
-            state.games.splice(idx, 1);
-            renderAdminGames();
-        }
-
-        function moveGame(idx, dir) {
-            const target = idx + dir;
-            if (target < 0 || target >= state.games.length) return;
-            const temp = state.games[idx];
-            state.games[idx] = state.games[target];
-            state.games[target] = temp;
-            renderAdminGames();
-        }
-
-        // Auto-redimensionado inteligente a formato exacto 2:3 (480x720) CERO distorsión
-        function handleCoverUpload(idx, inputEl, mode = "cover") {
-            const file = inputEl.files && inputEl.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    const TARGET_W = 480;
-                    const TARGET_H = 720;
-                    const canvas = document.createElement("canvas");
-                    canvas.width = TARGET_W;
-                    canvas.height = TARGET_H;
-                    const ctx = canvas.getContext("2d");
-
-                    // 1. Pintar fondo relleno proporcional difuminado para que jamás queden bordes vacíos
-                    const bgScale = Math.max(TARGET_W / img.width, TARGET_H / img.height);
-                    const bgW = img.width * bgScale;
-                    const bgH = img.height * bgScale;
-                    const bgX = (TARGET_W - bgW) / 2;
-                    const bgY = (TARGET_H - bgH) / 2;
-
-                    if (mode === "blur-fit") {
-                        ctx.save();
-                        ctx.filter = "blur(20px) brightness(0.55)";
-                        ctx.drawImage(img, bgX - 20, bgY - 20, bgW + 40, bgH + 40);
-                        ctx.restore();
-
-                        // Encajar imagen completa al centro manteniendo proporción 1:1 exacta
-                        const fitScale = Math.min(TARGET_W / img.width, TARGET_H / img.height);
-                        const fgW = img.width * fitScale;
-                        const fgH = img.height * fitScale;
-                        const fgX = (TARGET_W - fgW) / 2;
-                        const fgY = (TARGET_H - fgH) / 2;
-                        ctx.drawImage(img, fgX, fgY, fgW, fgH);
-                    } else {
-                        // Modo 'cover': Llenar el formato 480x720 escalando proporcionalmente desde el centro sin estirar ni deformar
-                        ctx.imageSmoothingEnabled = true;
-                        ctx.imageSmoothingQuality = "high";
-                        ctx.drawImage(img, bgX, bgY, bgW, bgH);
-                    }
-
-                    const dataUrl = canvas.toDataURL("image/jpeg", 0.86);
-                    state.games[idx].image = dataUrl;
-                    document.getElementById(`preview-img-${idx}`).src = dataUrl;
-                    document.getElementById(`img-input-${idx}`).value = dataUrl;
-                    showToast("🖼️ Carátula auto-redimensionada a 480x720 (2:3) sin distorsión");
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
         // ================= 2. SUB-ÍNDICES =================
         function renderAdminSubIndices() {
             const container = document.getElementById("admin-subindices-list");
+            if (!container) return;
             container.innerHTML = (state.subIndices || []).map((sub, idx) => `
                 <div class="form-grid" style="background:rgba(17,8,32,0.85);padding:1rem;border-radius:14px;margin-bottom:0.75rem;border:1px solid rgba(168,85,247,0.25);align-items:end;">
                     <div class="field">
                         <label>ID Interno (sin espacios)</label>
-                        <input type="text" value="${escapeAttr(sub.id)}" ${sub.id === 'todos' ? 'disabled' : ''} oninput="state.subIndices[${idx}].id = this.value.toLowerCase().replace(/[^a-z0-9_-]/g,'')">
+                        <input type="text" value="${escapeAttr(sub.id)}" oninput="state.subIndices[${idx}].id = this.value" ${sub.id === 'todos' || sub.id === 'espanol' ? 'readonly' : ''}>
                     </div>
                     <div class="field">
-                        <label>Nombre Visible en Botón</label>
+                        <label>Nombre de la Pestaña</label>
                         <input type="text" value="${escapeAttr(sub.label)}" oninput="state.subIndices[${idx}].label = this.value">
                     </div>
                     <div class="field">
-                        <label>Ícono (Ej: fa-bolt, fa-cube, fa-star)</label>
-                        <input type="text" value="${escapeAttr(sub.icon || 'fa-gamepad')}" oninput="state.subIndices[${idx}].icon = this.value">
-                    </div>
-                    <div class="field">
-                        <label>Color de Etiqueta</label>
-                        <input type="color" value="${escapeAttr(sub.color || '#9333ea')}" style="height:40px;padding:4px;" oninput="state.subIndices[${idx}].color = this.value">
+                        <label>Título del Encabezado</label>
+                        <input type="text" value="${escapeAttr(sub.title)}" oninput="state.subIndices[${idx}].title = this.value">
                     </div>
                     <div>
-                        ${sub.id !== 'todos' ? `<button type="button" class="btn-action btn-danger" onclick="state.subIndices.splice(${idx},1);renderAdminSubIndices();renderAdminGames();"><i class="fa-solid fa-trash"></i> Borrar</button>` : ''}
+                        ${sub.id === 'todos' || sub.id === 'espanol' ? '<span style="font-size:0.75rem;color:var(--text-muted);">Pestaña Principal</span>' : `<button type="button" class="btn-action btn-danger" onclick="deleteSubIndex(${idx})"><i class="fa-solid fa-trash"></i></button>`}
                     </div>
                 </div>
             `).join("");
         }
 
         function addSubIndex() {
+            const id = "sub_" + Date.now().toString(36);
             state.subIndices.push({
-                id: "nuevo_" + (state.subIndices.length + 1),
+                id: id,
                 label: "Nueva Categoría",
-                icon: "fa-star",
-                color: "#0284c7"
+                title: "Catálogo de " + id
             });
+            markLocalDirty();
             renderAdminSubIndices();
-            renderAdminGames();
         }
 
-        // ================= 3. PÁGINA Y PESTAÑAS =================
+        function deleteSubIndex(idx) {
+            state.subIndices.splice(idx, 1);
+            markLocalDirty();
+            renderAdminSubIndices();
+        }
+
+        // ================= 3. INFORMACIÓN DE LA PÁGINA =================
         function renderAdminSite() {
-            const s = state.site || (state.site = {});
-            const nav = s.navTabs || (s.navTabs = { catalogo: "Catálogo", guias: "Guías de Instalación", team: "El Team" });
             const container = document.getElementById("admin-site-form");
+            if (!container) return;
+            const s = state.site || {};
             container.innerHTML = `
                 <div class="field">
-                    <label>Nombre Marca (Parte 1 Blanca)</label>
+                    <label>Prefijo del Nombre (Ej: NX)</label>
                     <input type="text" value="${escapeAttr(s.brandFirst || 'NX')}" oninput="state.site.brandFirst = this.value">
                 </div>
                 <div class="field">
-                    <label>Nombre Marca (Parte 2 Dorada)</label>
+                    <label>Destacado Dorado (Ej: MASTERS)</label>
                     <input type="text" value="${escapeAttr(s.brandHighlight || 'MASTERS')}" oninput="state.site.brandHighlight = this.value">
                 </div>
                 <div class="field">
-                    <label>Subtítulo bajo el Logo</label>
+                    <label>Subtítulo de la Marca</label>
                     <input type="text" value="${escapeAttr(s.subtitle || '')}" oninput="state.site.subtitle = this.value">
                 </div>
                 <div class="field">
-                    <label>Texto Botón Comunidad (Discord / WhatsApp)</label>
-                    <input type="text" value="${escapeAttr(s.communityLabel || '')}" oninput="state.site.communityLabel = this.value">
-                </div>
-                <div class="field full">
-                    <label>Link de Invitación a tu Comunidad (Discord / WhatsApp / Telegram)</label>
-                    <input type="url" value="${escapeAttr(s.communityUrl || '')}" oninput="state.site.communityUrl = this.value">
-                </div>
-                <div class="field">
-                    <label>Nombre Pestaña 1 (Catálogo)</label>
-                    <input type="text" value="${escapeAttr(nav.catalogo || 'Catálogo')}" oninput="state.site.navTabs.catalogo = this.value">
-                </div>
-                <div class="field">
-                    <label>Nombre Pestaña 2 (Guías)</label>
-                    <input type="text" value="${escapeAttr(nav.guias || 'Guías de Instalación')}" oninput="state.site.navTabs.guias = this.value">
-                </div>
-                <div class="field">
-                    <label>Nombre Pestaña 3 (Team)</label>
-                    <input type="text" value="${escapeAttr(nav.team || 'El Team')}" oninput="state.site.navTabs.team = this.value">
-                </div>
-                <div class="field">
-                    <label>Título Banner (Prefijo)</label>
-                    <input type="text" value="${escapeAttr(s.heroTitlePrefix || 'Bienvenidos a')}" oninput="state.site.heroTitlePrefix = this.value">
-                </div>
-                <div class="field">
-                    <label>Título Banner (Cinta Dorada)</label>
-                    <input type="text" value="${escapeAttr(s.heroRibbon || 'NXMASTERS')}" oninput="state.site.heroRibbon = this.value">
+                    <label>Título Grande del Banner</label>
+                    <input type="text" value="${escapeAttr(s.heroTitle || '')}" oninput="state.site.heroTitle = this.value">
                 </div>
                 <div class="field full">
                     <label>Descripción Principal del Banner</label>
@@ -890,6 +1651,7 @@
         // ================= 4. GUÍAS =================
         function renderAdminGuides() {
             const container = document.getElementById("admin-guides-list");
+            if (!container) return;
             container.innerHTML = (state.guides || []).map((g, idx) => `
                 <div class="form-grid" style="background:rgba(17,8,32,0.85);padding:1.1rem;border-radius:14px;margin-bottom:0.85rem;border:1px solid rgba(168,85,247,0.25);">
                     <div class="field">
@@ -902,10 +1664,10 @@
                     </div>
                     <div class="field full">
                         <label>Pasos (Escribe 1 paso por cada línea)</label>
-                        <textarea rows="4" oninput="state.guides[${idx}].steps = this.value.split('\\n').map(x=>x.trim()).filter(Boolean)">${escapeHtml((g.steps || []).join('\n'))}</textarea>
+                        <textarea rows="4" oninput="state.guides[${idx}].steps = this.value.split('\n').map(x=>x.trim()).filter(Boolean)">${escapeHtml((g.steps || []).join('\n'))}</textarea>
                     </div>
                     <div>
-                        <button type="button" class="btn-action btn-danger" onclick="state.guides.splice(${idx},1);renderAdminGuides();"><i class="fa-solid fa-trash"></i> Eliminar Guía</button>
+                        <button type="button" class="btn-action btn-danger" onclick="state.guides.splice(${idx},1);markLocalDirty();renderAdminGuides();"><i class="fa-solid fa-trash"></i> Eliminar Guía</button>
                     </div>
                 </div>
             `).join("");
@@ -915,14 +1677,16 @@
             state.guides.push({
                 title: "Nueva Guía de Instalación",
                 icon: "fa-screwdriver-wrench",
-                steps: ["Paso 1: Descarga desde TeraBox.", "Paso 2: Copia a la microSD."]
+                steps: ["Paso 1: Descarga desde TeraBox o Google Drive.", "Paso 2: Copia a la microSD."]
             });
+            markLocalDirty();
             renderAdminGuides();
         }
 
         // ================= 5. TEAM =================
         function renderAdminTeam() {
             const container = document.getElementById("admin-team-list");
+            if (!container) return;
             container.innerHTML = (state.team || []).map((m, idx) => `
                 <div class="form-grid" style="background:rgba(17,8,32,0.85);padding:1rem;border-radius:14px;margin-bottom:0.75rem;border:1px solid rgba(168,85,247,0.25);align-items:end;">
                     <div class="field">
@@ -942,7 +1706,7 @@
                         <input type="text" value="${escapeAttr(m.specialty)}" oninput="state.team[${idx}].specialty = this.value">
                     </div>
                     <div>
-                        <button type="button" class="btn-action btn-danger" onclick="state.team.splice(${idx},1);renderAdminTeam();"><i class="fa-solid fa-trash"></i></button>
+                        <button type="button" class="btn-action btn-danger" onclick="state.team.splice(${idx},1);markLocalDirty();renderAdminTeam();"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
             `).join("");
@@ -955,75 +1719,83 @@
                 role: "Developer NX",
                 specialty: "Ports & Comunidad"
             });
+            markLocalDirty();
             renderAdminTeam();
         }
 
-        // ================= PUBLICACIÓN 24/7 PARA TODO EL STAFF =================
-        function buildDataJsString() {
-            return `/**\n * CONFIGURACIÓN GENERADA POR NXMASTERS STUDIO\n */\nwindow.NX_CONFIG = ${JSON.stringify(state, null, 4)};\nwindow.NX_GAMES = window.NX_CONFIG.games;\nwindow.NX_TEAM = window.NX_CONFIG.team;\n`;
-        }
+        
+        // ================= SEGUIMIENTO DE ADMINISTRADORES CONECTADOS EN VIVO =================
+        function initAdminPresence() {
+            const badgeCount = document.getElementById("admin-presence-count");
+            const badgeText = document.getElementById("admin-presence-text");
+            if (!badgeCount && !badgeText) return;
 
-        async function publishToGitHub() {
-            const token = (localStorage.getItem("nxm_gh_token") || "").trim();
-            if (!token) {
-                document.getElementById("staff-lock").style.display = "flex";
-                showToast("🔒 Ingresa primero la clave del Staff", true);
-                return;
+            const adminSessionId = "admin_" + Math.random().toString(36).substr(2, 8);
+            const channel = window.BroadcastChannel ? new BroadcastChannel("nxm_admin_presence_room") : null;
+
+            function pingAdminHeartbeat() {
+                const now = Date.now();
+                try {
+                    let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
+                    active[adminSessionId] = { time: now, user: "Tú" };
+                    // Limpiar sesiones inactivas (> 12 segundos)
+                    for (const id in active) {
+                        if (now - active[id].time > 12000) delete active[id];
+                    }
+                    localStorage.setItem("nxm_active_admins", JSON.stringify(active));
+                    updateAdminCountDisplay(Object.keys(active).length);
+                } catch (e) {}
+
+                if (channel) {
+                    channel.postMessage({ type: "ping", sessionId: adminSessionId, time: now });
+                }
             }
 
-            const btn = document.getElementById("btn-save-cloud");
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Publicando en vivo...`;
-            btn.disabled = true;
-
-            try {
-                const apiUrl = `https://api.github.com/repos/${DEFAULT_REPO}/contents/data.js`;
-                const getRes = await fetch(apiUrl, {
-                    headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github+json" }
-                });
-                let sha = undefined;
-                if (getRes.ok) {
-                    const info = await getRes.json();
-                    sha = info.sha;
+            function updateAdminCountDisplay(count) {
+                const total = Math.max(1, count);
+                if (badgeCount) badgeCount.textContent = total;
+                if (badgeText) {
+                    if (total === 1) {
+                        badgeText.innerHTML = `<strong>1</strong> Admin en línea <span style="font-size:0.72rem;opacity:0.85;">(Tú)</span>`;
+                    } else {
+                        badgeText.innerHTML = `<strong>${total}</strong> Admins en línea <span style="font-size:0.72rem;color:#4ade80;font-weight:900;">(Tú + ${total - 1} Staff)</span>`;
+                    }
                 }
-
-                const contentUtf8 = buildDataJsString();
-                const base64Content = btoa(unescape(encodeURIComponent(contentUtf8)));
-
-                const putRes = await fetch(apiUrl, {
-                    method: "PUT",
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "Accept": "application/vnd.github+json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        message: "Update catalog via NXMASTERS Staff Studio",
-                        content: base64Content,
-                        sha: sha,
-                        branch: "main"
-                    })
-                });
-
-                if (!putRes.ok) {
-                    throw new Error(await putRes.text());
-                }
-
-                showToast("✅ ¡Publicado en vivo por el Staff! En ~20s se actualiza para todos.");
-            } catch (err) {
-                console.error(err);
-                showToast("❌ Error al publicar. Verifica tu conexión.", true);
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
             }
+
+            pingAdminHeartbeat();
+            setInterval(pingAdminHeartbeat, 4000);
+
+            if (channel) {
+                channel.onmessage = (e) => {
+                    if (e.data && e.data.type === "ping") {
+                        pingAdminHeartbeat();
+                    } else if (e.data && e.data.type === "bye") {
+                        try {
+                            let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
+                            delete active[e.data.sessionId];
+                            localStorage.setItem("nxm_active_admins", JSON.stringify(active));
+                            updateAdminCountDisplay(Object.keys(active).length);
+                        } catch (err) {}
+                    }
+                };
+            }
+
+            window.addEventListener("beforeunload", () => {
+                try {
+                    let active = JSON.parse(localStorage.getItem("nxm_active_admins") || "{}");
+                    delete active[adminSessionId];
+                    localStorage.setItem("nxm_active_admins", JSON.stringify(active));
+                } catch (e) {}
+                if (channel) channel.postMessage({ type: "bye", sessionId: adminSessionId });
+            });
         }
 
         function escapeAttr(str) {
             return String(str || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
         function escapeHtml(str) {
-            return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return String(str || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         }
     </script>
 </body>
