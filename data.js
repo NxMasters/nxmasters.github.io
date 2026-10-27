@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793075386739_s36eqo",
+            "title": "POKEMON ZAFIRO ALFA ",
+            "type": "fork",
+            "typeLabel": "Fork 3DS",
+            "category": "AVENTURA ",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2 GB",
+            "language": "multi",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793075421855.jpg",
+            "description": "USAR OVERCLOK",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/JYimZVHm3E",
+            "patchLink": ""
+        },
+        {
             "id": "1792993892250_zkairp",
             "title": "MANHUNT 2 ",
             "type": "fork",
