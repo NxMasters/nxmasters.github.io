@@ -139,7 +139,7 @@ window.NX_CONFIG = {
             "id": "1793081256297_gg2tqp",
             "title": "YOSHIS NEW ISLAND ",
             "type": "fork",
-            "typeLabel": "Fork PSP",
+            "typeLabel": "Fork 3DS",
             "category": "AVENTURA",
             "arch": "ARM64 / WineNX",
             "engine": [
