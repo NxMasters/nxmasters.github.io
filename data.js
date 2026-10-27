@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793080674133_qhniko",
+            "title": "Nuevo Proyecto NXMasters",
+            "type": "fork",
+            "typeLabel": "Fork 3DS",
+            "category": "AVENTURA",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2GB",
+            "language": "multi",
+            "author": "LordErick & KNXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793080678196.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/xXOL4L0N2w",
+            "patchLink": ""
+        },
+        {
             "id": "1793079620601_0bahrz",
             "title": "GHOST RECOON PREDATOR NX MASTERS",
             "type": "fork",
