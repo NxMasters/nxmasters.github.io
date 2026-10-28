@@ -137,7 +137,7 @@ window.NX_CONFIG = {
     "games": [
         {
             "id": "1793161192735_yafdb9",
-            "title": "Nuevo Proyecto NXMasters",
+            "title": "POKEMON PENUMBRA MOON",
             "type": "fork",
             "typeLabel": "Fork 3DS",
             "category": "Acción,AVENTURA",
