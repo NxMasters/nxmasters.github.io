@@ -165,7 +165,7 @@ window.NX_CONFIG = {
         },
         {
             "id": "1793167877797_9l3e85",
-            "title": "RESIDENT EVIL 2 MOD HACK",
+            "title": "RESIDENT EVIL 2 MOD HACK  LEON",
             "type": "fork",
             "typeLabel": "Fork Autorun",
             "category": "Acción",
