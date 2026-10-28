@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793225928186_axu05b",
+            "title": "ALONE IN THE DARK ",
+            "type": "fork",
+            "typeLabel": "Fork PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "3.5 GB",
+            "language": "es",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793225959500.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/Fdwy7TXjvB",
+            "patchLink": ""
+        },
+        {
             "id": "1793223864410_q9z2mb",
             "title": "DIGIMON RUMBLE ARENA 2 NXM",
             "type": "fork",
