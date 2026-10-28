@@ -286,7 +286,7 @@ window.NX_CONFIG = {
                 "Autorun 4.5"
             ],
             "size": "2 GB",
-            "language": "es",
+            "language": "en",
             "author": "LordErick/DaniUchiha & NXMasters Team",
             "status": "disponible",
             "progress": 100,
@@ -296,7 +296,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "",
+            "image": "assets/covers/cover_the_3rd_b_nx_masters_1793160803553.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
