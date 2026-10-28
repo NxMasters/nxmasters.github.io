@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793169474474_06m74h",
+            "title": "RESIDENT EVIL 1.5 ",
+            "type": "fork",
+            "typeLabel": "Fork PS1",
+            "category": "Acción SURVIVAL",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "en",
+            "author": "LordErick & KNXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793169482487.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/HzTrJp3BxJ",
+            "patchLink": ""
+        },
+        {
             "id": "1793167929202_96c7y8",
             "title": "YO KAI WATCH 2 NXM",
             "type": "fork",
