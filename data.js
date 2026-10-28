@@ -296,7 +296,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_the_3rd_b_nx_masters_1793160692061.jpg",
+            "image": "assets/covers/cover_the_3rd_b_nx_masters_1793160712894.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
