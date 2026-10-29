@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793246634465_kmla0n",
+            "title": "PRINCES OF PERCIA TWO THRONES ",
+            "type": "fork",
+            "typeLabel": "Fork Autorun",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2.5 GB",
+            "language": "en",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_princes_of_percia_two_th_1793246699738.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/lwTWSTGoCt",
+            "patchLink": ""
+        },
+        {
             "id": "1793244336806_2vzr2u",
             "title": "BATMAN BEGINS",
             "type": "fork",
