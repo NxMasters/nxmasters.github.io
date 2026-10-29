@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793234828100_jn4bm6",
+            "title": "Nuevo Proyecto NXMasters",
+            "type": "fork",
+            "typeLabel": "Fork GC",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.2 GB",
+            "language": "en",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793234845396.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/vcll074FT3",
+            "patchLink": ""
+        },
+        {
             "id": "1793233181975_v1ymny",
             "title": "MANHUNT ",
             "type": "fork",
