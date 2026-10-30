@@ -136,11 +136,39 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793402564986_ns90iw",
+            "title": "POKEMON SUPREME RUBY",
+            "type": "fork",
+            "typeLabel": "Fork 3DS",
+            "category": "AVENTURA ",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2.5 GB",
+            "language": "multi",
+            "author": "LordErick/DaniUchiha & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793402573366.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/FAAU1F5pUM",
+            "patchLink": ""
+        },
+        {
             "id": "1793401444055_r0n615",
             "title": "POKEMON NEO Y ",
             "type": "fork",
             "typeLabel": "Fork 3DS",
-            "category": "Acción",
+            "category": "AVENTURA ",
             "arch": "ARM64 / WineNX",
             "engine": [
                 "Autorun 4.5"
