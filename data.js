@@ -230,7 +230,7 @@ window.NX_CONFIG = {
                 "Autorun 4.5"
             ],
             "size": "2.5 GB",
-            "language": "en",
+            "language": "multi",
             "author": "LordErick/DaniUchiha & NXMasters Team",
             "status": "disponible",
             "progress": 100,
@@ -398,7 +398,7 @@ window.NX_CONFIG = {
                 "Autorun 4.5"
             ],
             "size": "1.5 GB",
-            "language": "en",
+            "language": "multi",
             "author": "LordErick/DaniUchiha & NXMasters Team",
             "status": "disponible",
             "progress": 100,
