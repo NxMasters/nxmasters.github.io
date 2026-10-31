@@ -147,7 +147,7 @@ window.NX_CONFIG = {
             ],
             "size": "1GB",
             "language": "es",
-            "author": "NXMasters Team",
+            "author": "LordErick & KNXMasters Team",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
