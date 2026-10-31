@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_devil_may_cry_4_2008_1793460948875.jpg",
+            "image": "assets/covers/cover_devil_may_cry_4_2008_1793461006184.jpg",
             "description": "Mucha gente conoce la historia del abuelo vs el diablo en el cerro, pero gracias a este se puede VIVIR la historia de temible combate:\nEL DIABLO LLORANDO EN 4!\nComo siempre OC:\nCPU 1785\nGPU 921\nRAM 1600\nBAJAR LOS GRÁFICOS DE ESTA MANERA:\nTEXTURE LOW\nSHADOW OFF/HIGH (en el bosque)\nQUALITY LOW",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
