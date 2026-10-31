@@ -6,6 +6,7 @@ function getConfig() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+    initTheme();
     renderSiteHeaderAndHero();
     renderFilterTabs();
     renderCatalog();
@@ -459,8 +460,8 @@ function openGameModal(id) {
         <div class="modal-header">
             <div>
                 <span class="chip-cat" style="margin-bottom:0.4rem;display:inline-block;">${game.typeLabel} • ${game.category}</span>
-                <h2 style="font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:900;color:#fff;">${game.title}</h2>
-                <p style="font-size:0.82rem;color:#f0abfc;margin-top:0.2rem;">
+                <h2 class="modal-title">${game.title}</h2>
+                <p class="modal-author">
                     <i class="fa-solid fa-code"></i> Por <strong>${game.author}</strong>
                 </p>
             </div>
@@ -473,7 +474,7 @@ function openGameModal(id) {
             ${game.description || ""}
         </p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.65rem;margin-bottom:1.25rem;background:rgba(0,0,0,0.28);padding:0.9rem;border-radius:12px;border:1px solid rgba(255,255,255,0.08);">
+        <div class="modal-specs-box">
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Arquitectura</span><strong>${game.arch || "N/A"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Entorno / Motor</span><strong>${builds || "Estándar"}</strong></div>
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Tamaño</span><strong>${game.size || "N/A"}</strong></div>
@@ -512,9 +513,9 @@ function renderTeam() {
         <div class="member-card">
             <div class="member-icon">${member.avatar || "🎮"}</div>
             <div>
-                <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;">${member.name}</h3>
-                <p style="font-size:0.76rem;color:#fde047;font-weight:700;">${member.role}</p>
-                <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem;">${member.specialty}</p>
+                <h3 class="member-name">${member.name}</h3>
+                <p class="member-role">${member.role}</p>
+                <p class="member-specialty">${member.specialty}</p>
             </div>
         </div>
     `).join("");
@@ -599,5 +600,47 @@ function initLiveVisitorCounter() {
                 updateDisplay(currentCount);
             }
         };
+    }
+}
+
+
+// ================= ALTERNANCIA DE MODO CLARO / OSCURO (NXMASTERS) =================
+function initTheme() {
+    let saved = "dark";
+    try {
+        saved = localStorage.getItem("nxm_theme") || "dark";
+    } catch (e) {}
+
+    if (saved === "light") {
+        document.documentElement.classList.add("theme-light");
+    } else {
+        document.documentElement.classList.remove("theme-light");
+    }
+    updateThemeToggleUI();
+}
+
+function toggleTheme() {
+    const isLight = document.documentElement.classList.toggle("theme-light");
+    try {
+        localStorage.setItem("nxm_theme", isLight ? "light" : "dark");
+    } catch (e) {}
+    updateThemeToggleUI();
+}
+
+function updateThemeToggleUI() {
+    const isLight = document.documentElement.classList.contains("theme-light");
+    const icon = document.getElementById("theme-switch-icon");
+    const text = document.getElementById("theme-switch-text");
+    const btn = document.getElementById("theme-switch-btn");
+
+    if (icon) {
+        icon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    }
+    if (text) {
+        text.textContent = isLight ? "Claro" : "Oscuro";
+    }
+    if (btn) {
+        btn.setAttribute("title", isLight ? "Modo Claro NXMASTERS activo (Clic para volver a Modo Oscuro)" : "Modo Oscuro activo (Clic para activar Modo Claro NXMASTERS)");
+        btn.setAttribute("aria-label", isLight ? "Cambiar a Modo Oscuro" : "Cambiar a Modo Claro NXMASTERS");
     }
 }

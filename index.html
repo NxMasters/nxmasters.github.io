@@ -5,12 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NXMASTERS — Recompilaciones Estáticas, Ports, Wrappers y Forks para Nintendo Switch</title>
     <meta name="description" content="Comunidad oficial de NXMASTERS. Descarga directa por TeraBox de recompilaciones estáticas, ports nativos, wrappers Android32 y forks WineNX/Autorun para Nintendo Switch.">
-    <link rel="icon" type="image/jpeg" href="assets/nxmasters_logo.jpg">
+    <link rel="icon" type="image/jpeg" href="assets/nxmasters_logo.jpg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Manrope:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.2">
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem("nxm_theme") === "light") {
+                    document.documentElement.classList.add("theme-light");
+                }
+            } catch(e) {}
+        })();
+    </script>
 </head>
 <body>
 
@@ -18,7 +27,7 @@
     <header class="glass-header">
         <nav class="site-bar" aria-label="Navegación Principal">
             <a href="#" onclick="switchView('catalogo', event)" class="brand">
-                <img src="assets/nxmasters_logo.jpg" alt="Logo NXMASTERS" class="brand-avatar">
+                <img src="assets/nxmasters_logo.jpg?v=2" alt="Logo NXMASTERS" class="brand-avatar">
                 <div class="brand-title-wrap">
                     <span class="brand-name">NX<span class="brand-gold">MASTERS</span></span>
                     <span class="brand-sub">Gaming Zone • Switch Scene</span>
@@ -43,6 +52,16 @@
             </div>
 
             <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+                <!-- BOTÓN ALTERNAR MODO CLARO / OSCURO (NXMASTERS) -->
+                <button type="button" class="theme-switch-btn" id="theme-switch-btn" onclick="toggleTheme()" aria-label="Cambiar tema" title="Alternar entre Modo Claro y Modo Oscuro">
+                    <span class="theme-toggle-track">
+                        <span class="theme-toggle-thumb">
+                            <i class="fa-solid fa-moon" id="theme-switch-icon"></i>
+                        </span>
+                    </span>
+                    <span class="theme-switch-text" id="theme-switch-text">Oscuro</span>
+                </button>
+
                 <div class="live-counter-pill" title="Usuarios explorando NXMASTERS en vivo">
                     <span class="live-dot-pulse"></span>
                     <i class="fa-solid fa-users" style="color:#22c55e;font-size:0.8rem;"></i>
@@ -62,7 +81,7 @@
         <!-- HERO BANNER CON EL LOGO OFICIAL DE 6 INTEGRANTES -->
         <section class="hero-banner">
             <div class="hero-logo-card" title="NXMASTERS Squad">
-                <img src="assets/nxmasters_logo.jpg" alt="Equipo NXMASTERS">
+                <img src="assets/nxmasters_logo.jpg?v=2" alt="Equipo NXMASTERS">
             </div>
             <div class="hero-info">
                 <h1>
@@ -176,13 +195,13 @@
 
     <!-- PIE DE PÁGINA -->
     <footer class="footer-glow">
-        <p style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem;color:#fff;margin-bottom:0.35rem;">
+        <p class="footer-title">
             NX<span class="brand-gold">MASTERS</span> TEAM &copy; 2026
         </p>
         <p>Recompilaciones Estáticas • Ports Nativos • Wrappers • Forks Autorun — Alojados directamente en <strong>TeraBox</strong>, <strong>Google Drive</strong> y <strong>Viking File</strong>.</p>
     </footer>
 
     <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js?v=2.2"></script>
 </body>
 </html>
