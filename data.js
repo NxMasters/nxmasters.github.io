@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793462070228_na3i9k",
+            "title": "Dead Space VOSE",
+            "type": "fork",
+            "typeLabel": "Fork Carafe",
+            "category": "Acción - Terror",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "8.7 GB",
+            "language": "es",
+            "author": "CamiRock17",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_dead_space_vose_1793462103451.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/TdLVr1jyzh",
+            "patchLink": ""
+        },
+        {
             "id": "1793461932260_0skeyf",
             "title": "Dead Space 2 Castellano",
             "type": "fork",
