@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793460534023_64q8z7",
+            "title": "Devil May Cry 4 2008",
+            "type": "fork",
+            "typeLabel": "Fork Carafe",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "8.42 GB",
+            "language": "en",
+            "author": "NXMasters Team",
+            "status": "disponible",
+            "progress": 95,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_devil_may_cry_4_2008_1793460757425.jpg",
+            "description": "Mucha gente conoce la historia del abuelo vs el diablo en el cerro, pero gracias a este se puede VIVIR la historia de temible combate:\nEL DIABLO LLORANDO EN 4!\nComo siempre OC:\nCPU 1785\nGPU 921\nRAM 1600\nBAJAR LOS GRÁFICOS DE ESTA MANERA:\nTEXTURE LOW\nSHADOW OFF/HIGH (en el bosque)\nQUALITY LOW",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/heVWJWnLu6",
+            "patchLink": ""
+        },
+        {
             "id": "1793412578582_0bqiy7",
             "title": "CASTLEVANIA CURSE OF DARKNESS",
             "type": "fork",
