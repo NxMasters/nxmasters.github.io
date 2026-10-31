@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793464927824_xbii4n",
+            "title": "Shin Megami Tensei: Devil Summoner",
+            "type": "fork",
+            "typeLabel": "Fork  PSP",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1GB",
+            "language": "es",
+            "author": "NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_shin_megami_tensei_devil_1793465016204.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/bHzc97vHvT",
+            "patchLink": ""
+        },
+        {
             "id": "1793462269041_mgxqtk",
             "title": "Dead Space Castellano",
             "type": "fork",
