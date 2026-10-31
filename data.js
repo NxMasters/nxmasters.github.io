@@ -147,7 +147,7 @@ window.NX_CONFIG = {
             ],
             "size": "1.0 GB",
             "language": "es",
-            "author": "NXMasters Team",
+            "author": "CamiRock17",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
