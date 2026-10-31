@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793461932260_0skeyf",
+            "title": "Dead Space 2 Castellano",
+            "type": "fork",
+            "typeLabel": "Fork Carafe",
+            "category": "Acción-Terror",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "10 GB",
+            "language": "es",
+            "author": "CamiRock17",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": false,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_dead_space_2_castellano_1793462003777.jpg",
+            "description": "Test :P",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/232vBibxFf",
+            "patchLink": ""
+        },
+        {
             "id": "1793461834804_68bvi1",
             "title": "Metal Gear Rising Revengeance 480p",
             "type": "fork",
@@ -145,7 +173,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "7 GB",
             "language": "es",
             "author": "CamiRock17",
             "status": "disponible",
@@ -173,7 +201,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "1.5 GB",
             "language": "es",
             "author": "CamiRock17",
             "status": "disponible",
