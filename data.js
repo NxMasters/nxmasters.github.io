@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793461101377_4d03tg",
+            "title": "Castlevania Lords of shadow",
+            "type": "port",
+            "typeLabel": "Port nativo",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "14 GB",
+            "language": "es",
+            "author": "CamiRock17 / FurryLilManChild",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_castlevania_lords_of_sha_1793461473602.jpg",
+            "description": "Hasta dónde serías capaz de llegar por tu amada en un mundo donde te piden que el sacrificio es necesario? Gabriel Belmont dijo: \"Marie, iría hasta el infierno para poder llevarte al cielo\".\nCASTLEVANIA LORDS OF SHADOW 0.2\n\ncolocar dentro de la carpeta switch (o simplemente extraer la carpeta switch en la SD).\nIMPORTANTE: al empezar el juego, apretar - y + y configurar con \"performance\" y save.\nHay partes donde funciona a 30 sin OC, pero mayormente entre 15 y 21, con OC ronda los 30 a 21 en las escenas más fuertes\n\nvikingfile.com/f/M8QhpkLLM8 .nsp para no tener que hacer el método R (homebrew).\n",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/BXZYY3YvXY",
+            "patchLink": "https://vik1ngfile.site/f/M8QhpkLLM8"
+        },
+        {
             "id": "1793460534023_64q8z7",
             "title": "Devil May Cry 4 2008",
             "type": "fork",
@@ -147,7 +175,7 @@ window.NX_CONFIG = {
             ],
             "size": "8.42 GB",
             "language": "en",
-            "author": "NXMasters Team",
+            "author": "CamiRock17",
             "status": "disponible",
             "progress": 95,
             "showProgress": true,
@@ -1422,7 +1450,7 @@ window.NX_CONFIG = {
         },
         {
             "id": 1792611689569,
-            "title": "Metal Gear Rising Revengeance",
+            "title": "Metal Gear Rising Revengeance 1080p",
             "type": "fork",
             "typeLabel": "Fork Carafe",
             "category": "Acción",
