@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793461683351_5i5a1p",
+            "title": "Aristoputas",
+            "type": "fork",
+            "typeLabel": "Fork Carafe",
+            "category": "Drama-Suspenso-Gooner",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "CamiRock17",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_aristoputas_1793461709787.jpg",
+            "description": "Tu novia te dijo que le duele la cabeza esta noche? Estás solo, virgo? La negra no quiere hacer un 2x1 harry? NO TE PREOCUPES! Aristoputas tiene la solución para tu soledad!\nA diferencia de otros juegos, este se utiliza con la pantalla táctil (pero de todas formas, esta es la configuración para el mouse emulado).",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/CIXD6oitRo",
+            "patchLink": ""
+        },
+        {
             "id": "1793461101377_4d03tg",
             "title": "Castlevania Lords of shadow",
             "type": "port",
