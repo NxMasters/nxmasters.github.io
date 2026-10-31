@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793461834804_68bvi1",
+            "title": "Metal Gear Rising Revengeance 480p",
+            "type": "fork",
+            "typeLabel": "Fork Carafe",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_metal_gear_rising_reveng_1793461857504.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/gO35g2wxDZ",
+            "patchLink": ""
+        },
+        {
             "id": "1793461683351_5i5a1p",
             "title": "Aristoputas",
             "type": "fork",
