@@ -1,3 +1,20 @@
+function escapeHtml(str) {
+    return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+function escapeAttr(str) {
+    return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
 let currentFilter = "todos";
 
 function getConfig() {
@@ -364,9 +381,9 @@ function renderCatalog() {
             </div>
             <div class="card-body">
                 <div class="card-top">
-                    <span class="chip-cat">${game.category || "Switch"}</span>
-                    <span class="credit-porter" title="Desarrollado / Adaptado por ${game.author || 'NXMasters'}">
-                        <i class="fa-solid fa-user-astronaut"></i> ${game.author || "NXMasters"}
+                    <span class="chip-cat">${escapeHtml(game.category || "Switch")}</span>
+                    <span class="credit-porter" title="Creador / Adaptado por: ${escapeAttr(game.author || 'Comunidad')}">
+                        <i class="fa-solid fa-user-astronaut"></i> ${escapeHtml(game.author || "Comunidad")}
                     </span>
                 </div>
                 <h3 class="card-title">${game.title}</h3>
@@ -381,7 +398,7 @@ function renderCatalog() {
                 ${renderProgressBar(game)}
                 <div class="card-actions">
                     ${renderCardActionButton(game)}
-                    <button type="button" class="btn-info" onclick="openGameModal(${game.id})" title="Ver ficha técnica e instrucciones">
+                    <button type="button" class="btn-info" onclick="openGameModal('${escapeAttr(game.id)}')" title="Ver ficha técnica e instrucciones">
                         <i class="fa-solid fa-circle-info"></i>
                     </button>
                 </div>
@@ -459,10 +476,10 @@ function openGameModal(id) {
     body.innerHTML = `
         <div class="modal-header">
             <div>
-                <span class="chip-cat" style="margin-bottom:0.4rem;display:inline-block;">${game.typeLabel} • ${game.category}</span>
-                <h2 class="modal-title">${game.title}</h2>
-                <p class="modal-author">
-                    <i class="fa-solid fa-code"></i> Por <strong>${game.author}</strong>
+                <span class="chip-cat" style="margin-bottom:0.4rem;display:inline-block;">${escapeHtml(game.typeLabel || "Lanzamiento")} • ${escapeHtml(game.category || "Switch")}</span>
+                <h2 class="modal-title">${escapeHtml(game.title)}</h2>
+                <p class="modal-author" style="font-size:0.86rem;margin-top:0.3rem;">
+                    <i class="fa-solid fa-user-astronaut" style="color:var(--banner-gold);"></i> Créditos / Autor: <strong style="color:var(--text-main);">${escapeHtml(game.author || "Comunidad / Externo")}</strong>
                 </p>
             </div>
             <button type="button" class="modal-close" onclick="document.getElementById('modal-juego').close()" aria-label="Cerrar">
@@ -470,9 +487,9 @@ function openGameModal(id) {
             </button>
         </div>
 
-        <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.1rem;">
-            ${game.description || ""}
-        </p>
+        <div style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.15rem;white-space:pre-line;word-break:break-word;background:rgba(255,255,255,0.03);padding:0.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
+            ${escapeHtml(game.description || "Sin notas o descripción disponible.")}
+        </div>
 
         <div class="modal-specs-box">
             <div><span style="font-size:0.72rem;color:var(--text-dim);display:block;">Arquitectura</span><strong>${game.arch || "N/A"}</strong></div>

@@ -1282,7 +1282,7 @@
                 engine: ["Autorun 4.5"],
                 size: "1.0 GB",
                 language: "es",
-                author: "NXMasters Team",
+                author: "",
                 status: "disponible",
                 progress: 50,
                 showProgress: false,
@@ -1373,6 +1373,14 @@
             renderAdminGames();
         }
 
+        function setGameAuthor(idx, name) {
+            if (!state.games[idx]) return;
+            state.games[idx].author = name;
+            const input = document.getElementById(`author-input-${idx}`);
+            if (input) input.value = name;
+            markLocalDirty();
+        }
+
         function getAdminProgressStyle(pctInput) {
             const pct = Math.max(0, Math.min(100, Number(pctInput) || 0));
             const hue = pct <= 50
@@ -1444,7 +1452,7 @@
                     <div class="form-grid">
                         <div class="field">
                             <label>Título del Juego / Proyecto</label>
-                            <input type="text" value="${escapeAttr(g.title)}" oninput="state.games[${idx}].title = this.value">
+                            <input type="text" value="${escapeAttr(g.title)}" oninput="state.games[${idx}].title = this.value; markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>Sub-Índice (Pestaña de Filtro)</label>
@@ -1454,27 +1462,41 @@
                         </div>
                         <div class="field">
                             <label>Etiqueta en Esquina (Ej: Fork Autorun)</label>
-                            <input type="text" value="${escapeAttr(g.typeLabel)}" oninput="state.games[${idx}].typeLabel = this.value">
+                            <input type="text" value="${escapeAttr(g.typeLabel)}" oninput="state.games[${idx}].typeLabel = this.value; markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>Género / Categoría</label>
-                            <input type="text" value="${escapeAttr(g.category)}" oninput="state.games[${idx}].category = this.value">
+                            <input type="text" value="${escapeAttr(g.category)}" oninput="state.games[${idx}].category = this.value; markLocalDirty();">
                         </div>
-                        <div class="field">
-                            <label>Creador / Autor del Team</label>
-                            <input type="text" value="${escapeAttr(g.author)}" oninput="state.games[${idx}].author = this.value">
+                        <div class="field full" style="background:rgba(255,255,255,0.02); padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.08);">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+                                <label style="margin:0; font-weight:700; color:var(--banner-gold);"><i class="fa-solid fa-award"></i> Créditos / Autor Original del Port o Proyecto</label>
+                                <span style="font-size:0.75rem; color:#94a3b8;">Indica el creador real (naga, CamiRock17, NXMasters, etc.)</span>
+                            </div>
+                            <input type="text" id="author-input-${idx}" value="${escapeAttr(g.author || '')}" placeholder="Ej: naga / Marathon Team, CamiRock17, NXMasters Team, VasilkovND..." oninput="state.games[${idx}].author = this.value; markLocalDirty();">
+                            <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; align-items:center;">
+                                <span style="font-size:0.72rem; color:var(--text-muted);">Sugerencias rápidas:</span>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'NXMasters Team')">NXMasters Team</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'CamiRock17')">CamiRock17</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'DevZer0D4Y')">DevZer0D4Y</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'naga / Marathon Team')">naga / Marathon Team</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'VasilkovND')">VasilkovND</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'El Rors')">El Rors</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'ItsDroidy06')">ItsDroidy06</button>
+                                <button type="button" class="btn-action btn-soft" style="font-size:0.72rem; padding:3px 9px;" onclick="setGameAuthor(${idx}, 'Comunidad / Externo')">Comunidad / Externo</button>
+                            </div>
                         </div>
                         <div class="field">
                             <label>Arquitectura (Ej: ARM64 AOT, x86 WineNX)</label>
-                            <input type="text" value="${escapeAttr(g.arch)}" oninput="state.games[${idx}].arch = this.value">
+                            <input type="text" value="${escapeAttr(g.arch)}" oninput="state.games[${idx}].arch = this.value; markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>Motores / Builds (Separados por coma)</label>
-                            <input type="text" value="${escapeAttr((g.engine || []).join(', '))}" oninput="state.games[${idx}].engine = this.value.split(',').map(x=>x.trim()).filter(Boolean)">
+                            <input type="text" value="${escapeAttr((g.engine || []).join(', '))}" oninput="state.games[${idx}].engine = this.value.split(',').map(x=>x.trim()).filter(Boolean); markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>Peso (Ej: 6.8 GB)</label>
-                            <input type="text" value="${escapeAttr(g.size)}" oninput="state.games[${idx}].size = this.value">
+                            <input type="text" value="${escapeAttr(g.size)}" oninput="state.games[${idx}].size = this.value; markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>Idioma</label>
@@ -1516,7 +1538,7 @@
                         </div>
                         <div class="field">
                             <label>URL o Ruta de Carátula (2:3)</label>
-                            <input type="text" id="img-input-${idx}" value="${escapeAttr(g.image)}" oninput="state.games[${idx}].image = this.value; document.getElementById('preview-img-${idx}').src = this.value">
+                            <input type="text" id="img-input-${idx}" value="${escapeAttr(g.image)}" oninput="state.games[${idx}].image = this.value; document.getElementById('preview-img-${idx}').src = this.value; markLocalDirty();">
                         </div>
                         <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableTerabox !== false) ? 'rgba(56,189,248,0.4)' : 'var(--border)'}; opacity:${(g.enableTerabox !== false) ? '1' : '0.6'};">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
@@ -1526,7 +1548,7 @@
                                     <span>${(g.enableTerabox !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
-                            <input type="url" value="${escapeAttr(g.teraboxLink || '')}" placeholder="https://1024terabox.com/s/..." oninput="state.games[${idx}].teraboxLink = this.value">
+                            <input type="url" value="${escapeAttr(g.teraboxLink || '')}" placeholder="https://1024terabox.com/s/..." oninput="state.games[${idx}].teraboxLink = this.value; markLocalDirty();">
                         </div>
                         <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableGdrive !== false) ? 'rgba(16,185,129,0.4)' : 'var(--border)'}; opacity:${(g.enableGdrive !== false) ? '1' : '0.6'};">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
@@ -1536,7 +1558,7 @@
                                     <span>${(g.enableGdrive !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
-                            <input type="url" value="${escapeAttr(g.gdriveLink || '')}" placeholder="https://drive.google.com/file/d/..." oninput="state.games[${idx}].gdriveLink = this.value">
+                            <input type="url" value="${escapeAttr(g.gdriveLink || '')}" placeholder="https://drive.google.com/file/d/..." oninput="state.games[${idx}].gdriveLink = this.value; markLocalDirty();">
                         </div>
                         <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableViking !== false) ? 'rgba(234,179,8,0.45)' : 'var(--border)'}; opacity:${(g.enableViking !== false) ? '1' : '0.6'};">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
@@ -1546,11 +1568,11 @@
                                     <span>${(g.enableViking !== false) ? '🟢 Botón PRENDIDO' : '⚫ Botón APAGADO'}</span>
                                 </label>
                             </div>
-                            <input type="url" value="${escapeAttr(g.vikingLink || '')}" placeholder="https://vikingfile.com/..." oninput="state.games[${idx}].vikingLink = this.value">
+                            <input type="url" value="${escapeAttr(g.vikingLink || '')}" placeholder="https://vikingfile.com/..." oninput="state.games[${idx}].vikingLink = this.value; markLocalDirty();">
                         </div>
                         <div class="field">
                             <label>📦 Link de Parche Extra (Opcional)</label>
-                            <input type="url" value="${escapeAttr(g.patchLink || '')}" placeholder="Opcional" oninput="state.games[${idx}].patchLink = this.value">
+                            <input type="url" value="${escapeAttr(g.patchLink || '')}" placeholder="Opcional" oninput="state.games[${idx}].patchLink = this.value; markLocalDirty();">
                         </div>
                         <div class="field" style="background:rgba(15,17,26,0.55); padding:10px 12px; border-radius:10px; border:1px solid ${(g.enableDownloads !== false) ? 'rgba(56,189,248,0.4)' : 'var(--border)'}; opacity:${(g.enableDownloads !== false) ? '1' : '0.6'};">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px;">
@@ -1562,12 +1584,12 @@
                             </div>
                             <div style="display:flex; align-items:center; gap:8px;">
                                 <span style="font-size:0.76rem; color:var(--text-muted); white-space:nowrap;">Descargas Base / Iniciales:</span>
-                                <input type="number" min="0" value="${g.downloads ?? 0}" placeholder="0" style="flex:1;" oninput="state.games[${idx}].downloads = Math.max(0, parseInt(this.value) || 0)">
+                                <input type="number" min="0" value="${g.downloads ?? 0}" placeholder="0" style="flex:1;" oninput="state.games[${idx}].downloads = Math.max(0, parseInt(this.value) || 0); markLocalDirty();">
                             </div>
                         </div>
                         <div class="field full">
                             <label>Descripción / Notas de la versión</label>
-                            <textarea rows="2" oninput="state.games[${idx}].description = this.value">${escapeHtml(g.description || '')}</textarea>
+                            <textarea rows="2" oninput="state.games[${idx}].description = this.value; markLocalDirty();">${escapeHtml(g.description || '')}</textarea>
                         </div>
                     </div>
                 </div>
