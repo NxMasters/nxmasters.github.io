@@ -251,7 +251,7 @@ window.NX_CONFIG = {
             "id": "1793577586078_opsy86",
             "title": "POKEMON NEO Y",
             "type": "fork",
-            "typeLabel": "Fork PS2",
+            "typeLabel": "Fork  3DS",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
