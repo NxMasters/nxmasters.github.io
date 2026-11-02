@@ -173,7 +173,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "2.5 GB",
             "language": "multi",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
