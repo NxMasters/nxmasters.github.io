@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793579344060_hedjnl",
+            "title": "DEAD TO RIGHTS",
+            "type": "fork",
+            "typeLabel": "Fork PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "3 GB",
+            "language": "en",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793579354780.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/oc8q0axsz0",
+            "patchLink": ""
+        },
+        {
             "id": "1793577586078_opsy86",
             "title": "POKEMON NEO Y",
             "type": "fork",
@@ -156,7 +184,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_pokemon_neo_y_1793577848181.jpg",
+            "image": "assets/covers/cover_pokemon_neo_y_1793577912881.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
