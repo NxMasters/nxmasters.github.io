@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793577586078_opsy86",
+            "title": "POKEMON NEO Y",
+            "type": "fork",
+            "typeLabel": "Fork PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "multi",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_pokemon_neo_y_1793577725275.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/r4kyHQD7ag",
+            "patchLink": ""
+        },
+        {
             "id": 1792890868793,
             "title": "sonic unleashedRecompiled",
             "type": "recomp",
@@ -199,7 +227,7 @@ window.NX_CONFIG = {
             ],
             "size": "1GB",
             "language": "es",
-            "author": "LordErick & KNXMasters Team",
+            "author": "",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
