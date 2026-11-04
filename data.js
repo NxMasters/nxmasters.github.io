@@ -139,7 +139,7 @@ window.NX_CONFIG = {
             "id": "1793767032213_jyjlo7",
             "title": "crash twin sanity",
             "type": "fork",
-            "typeLabel": "Fork  PSP",
+            "typeLabel": "Fork  PS2",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
