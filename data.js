@@ -153,14 +153,14 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": false,
+            "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_dragon_ball_z_sagas_1793935462180.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/ZJFqPV0SK2",
+            "vikingLink": "https://vik1ngfile.site/f/XHbCZDXR2g",
             "patchLink": ""
         },
         {
