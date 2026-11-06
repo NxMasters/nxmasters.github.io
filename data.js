@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1793925100812_cpth2r",
+            "title": "Alice Madness Return fork",
+            "type": "fork",
+            "typeLabel": "Fork Autorun",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "6.97 GB",
+            "language": "es",
+            "author": "Fork basado en autorunNX de Dantico hecho por AscencionH.O",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": false,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_alice_madness_return_for_1793925166723.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vikingfile.com/f/x8faZtPagK#Alice.zip - 6.97 GB",
+            "patchLink": ""
+        },
+        {
             "id": "1793767032213_jyjlo7",
             "title": "crash twin sanity",
             "type": "fork",
