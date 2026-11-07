@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794026338468_p1daf3",
+            "title": "THE SUFFERING 2 ",
+            "type": "fork",
+            "typeLabel": "Fork PS2 ",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "4 GB",
+            "language": "en",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_the_suffering_2_1794026420104.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/g6yr0e9eRW",
+            "patchLink": ""
+        },
+        {
             "id": "1794024654643_ffzhhk",
             "title": "THE SUFFERING ",
             "type": "fork",
@@ -146,7 +174,7 @@ window.NX_CONFIG = {
                 "Autorun 4.5"
             ],
             "size": "4 GB",
-            "language": "es",
+            "language": "en",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
             "progress": 100,
