@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_fifa_street_2_1794017865431.jpg",
+            "image": "assets/covers/cover_fifa_street_2_1794017908865.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
