@@ -137,7 +137,7 @@ window.NX_CONFIG = {
     "games": [
         {
             "id": "1794017759633_7opu8v",
-            "title": "FIFA STREET 2 ",
+            "title": "FIFA STREET  2 ",
             "type": "fork",
             "typeLabel": "Fork GC",
             "category": "Acción",
@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_fifa_street_2_1794017965630.jpg",
+            "image": "assets/covers/cover_fifa_street_2_1794018015871.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
