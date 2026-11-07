@@ -164,6 +164,34 @@ window.NX_CONFIG = {
             "patchLink": ""
         },
         {
+            "id": "1794025814754_6r5r9i",
+            "title": "GOD HANDS ",
+            "type": "fork",
+            "typeLabel": "Fork PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "3 GB",
+            "language": "multi",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_god_hands_1794025862759.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/s2JQZQ56kc",
+            "patchLink": ""
+        },
+        {
             "id": "1794017759633_7opu8v",
             "title": "FIFA STREET  2 ",
             "type": "fork",
