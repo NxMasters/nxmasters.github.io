@@ -145,14 +145,14 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "15 GB",
             "language": "es",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
             "progress": 100,
             "showProgress": true,
-            "enableTerabox": true,
-            "enableGdrive": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
