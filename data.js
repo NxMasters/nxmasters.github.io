@@ -137,7 +137,7 @@ window.NX_CONFIG = {
     "games": [
         {
             "id": "1794229839545_44y8om",
-            "title": "DEAD SOACE 3 ",
+            "title": "DEAD SPACE 3 ",
             "type": "fork",
             "typeLabel": "Fork CARAFE",
             "category": "Acción",
