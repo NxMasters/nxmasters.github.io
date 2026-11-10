@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794348833156_k7zzqs",
+            "title": "PRINCE OF PERCIA 2008",
+            "type": "fork",
+            "typeLabel": "Fork CARAFE",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "9.GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 84,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1794348882679.jpg",
+            "description": "EL JUEGO LE FALTA POCA OPTIMISACION  SE ESTARA TRABAJANDO EN ELLO",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/LPOYsGYskx",
+            "patchLink": ""
+        },
+        {
             "id": "1794348505737_3sm2ic",
             "title": "PSYCHONAUTS",
             "type": "fork",
