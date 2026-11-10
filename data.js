@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794348505737_3sm2ic",
+            "title": "PSYCHONAUTS",
+            "type": "fork",
+            "typeLabel": "Fork CARAFE",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 85,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1794348542526.jpg",
+            "description": "TINEN QUE CONFIGURAR LOS MANDOS  YA ESTANDO DENTRO DEL JUEGO  cambiar a modo teclado y raton crear la partida y despues cambiar a mando xbox ",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/0BoS8JzQPe",
+            "patchLink": ""
+        },
+        {
             "id": "1794230870620_30t8ky",
             "title": "SHANK 2 ",
             "type": "fork",
