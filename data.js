@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794443721696_jtpxy4",
+            "title": "DEAD SPACE 2 ",
+            "type": "fork",
+            "typeLabel": "Fork CARAFE",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_dead_space_2_1794443770620.jpg",
+            "description": "SOLO PRESIONAR EN OK EN EL  MENSAGE QUE DA AL INICIAR EL JUEGO",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/jbyiDaZpmk",
+            "patchLink": ""
+        },
+        {
             "id": "1794348833156_k7zzqs",
             "title": "PRINCE OF PERCIA 2008",
             "type": "fork",
