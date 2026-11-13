@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794536494846_7qzkvh",
+            "title": "STREET CHAVES 1",
+            "type": "fork",
+            "typeLabel": "Fork DREMCAST ",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "171.MB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_street_chaves_1_1794536559709.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/1wQDOxUWCk",
+            "patchLink": ""
+        },
+        {
             "id": "1794536156076_ze6qn1",
             "title": "STREET CHAVES 2 CHAMPION  EDITION ",
             "type": "fork",
