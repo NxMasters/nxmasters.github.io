@@ -141,9 +141,9 @@ window.NX_CONFIG = {
             "type": "port",
             "typeLabel": "Ports  xbox",
             "category": "Acción",
-            "arch": "ARM64 / WineNX",
+            "arch": "ARM64 /rexglue",
             "engine": [
-                "Autorun 4.5"
+                "Deko3d"
             ],
             "size": "5.29 GB",
             "language": "es",
