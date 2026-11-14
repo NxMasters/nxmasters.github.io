@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_kameo_elements_of_power__1794623627390.jpg",
+            "image": "assets/covers/cover_kameo_elements_of_power__1794623665507.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
