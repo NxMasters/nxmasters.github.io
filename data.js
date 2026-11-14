@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794657480386_bu22sy",
+            "title": "kameo elements of power",
+            "type": "port",
+            "typeLabel": "Ports ",
+            "category": "Acción",
+            "arch": "ARM64 / xbox360",
+            "engine": [
+                "Rexglue"
+            ],
+            "size": "5.29 GB",
+            "language": "es",
+            "author": "NXMasters Team ",
+            "status": "disponible",
+            "progress": 94,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/nxmasters_logo.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vikingfile.com/f/uDCQeqpmO5#Kameo.zip - 5.29 GB",
+            "patchLink": ""
+        },
+        {
             "id": "1794626748030_w4nnlg",
             "title": "DRAGON BALL Z F",
             "type": "fork",
