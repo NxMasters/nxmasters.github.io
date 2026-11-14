@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794623501943_3uhffl",
+            "title": "kameo elements of power port Xbox360 ",
+            "type": "port",
+            "typeLabel": "Ports  xbox",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "5.29 GB",
+            "language": "es",
+            "author": "Ascencion H.O",
+            "status": "disponible",
+            "progress": 50,
+            "showProgress": false,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_kameo_elements_of_power__1794623627390.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vikingfile.com/f/uDCQeqpmO5#Kameo.zip - 5.29 GB",
+            "patchLink": ""
+        },
+        {
             "id": "1794536494846_7qzkvh",
             "title": "STREET CHAVES 1",
             "type": "fork",
