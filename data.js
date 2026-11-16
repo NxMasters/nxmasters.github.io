@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1794806424000_2npozv",
+            "title": "FAR CRY 2 ",
+            "type": "fork",
+            "typeLabel": "Fork CARAFE",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "4.7 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_far_cry_2_1794807115585.jpg",
+            "description": "ANTES DE INICIAR LA PARTIDA  VAGAR  LOS GRAFICOS TODO A BAJOS  PUEDEN USAR TAMBIEN EL TACTIL CON LA PANTALLA EN CONFIGURACIONES ",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/THPuGbYwTP",
+            "patchLink": ""
+        },
+        {
             "id": "1794784442712_7ryuoc",
             "title": "FAR CRY 1",
             "type": "fork",
