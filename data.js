@@ -156,11 +156,11 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_far_cry_1_1794784520872.jpg",
+            "image": "assets/covers/cover_far_cry_1_1794784593656.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "",
+            "vikingLink": "https://vik1ngfile.site/f/4PhtaJ7la2",
             "patchLink": ""
         },
         {
