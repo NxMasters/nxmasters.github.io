@@ -1738,7 +1738,7 @@ window.NX_CONFIG = {
                 "Autorun 4.5"
             ],
             "size": "2 GB",
-            "language": "en",
+            "language": "es",
             "author": "LordErick & KNXMasters Team",
             "status": "disponible",
             "progress": 100,
