@@ -1672,6 +1672,34 @@ window.NX_CONFIG = {
             "patchLink": ""
         },
         {
+            "id": 1792971827254,
+            "title": "GOD OF WAR CHAINS OF OLYMPUS",
+            "type": "fork",
+            "typeLabel": "Fork PSP",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "2 GB",
+            "language": "es",
+            "author": "LordErick & NXMasters Team",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_2_god_of_war_chains_of_oly.jpg",
+            "description": "texturas HD",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/aKn0NUH7zY",
+            "patchLink": ""
+        },
+        {
             "id": "1793078530118_yw4hz6",
             "title": "GOD OF WAR GHOST OF SPARTA ",
             "type": "fork",
@@ -1893,34 +1921,6 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vik1ngfile.site/f/I9pTzWjSUX",
-            "patchLink": ""
-        },
-        {
-            "id": 1792971827254,
-            "title": "GOD OF WAR CHAINS OF OLYMPUS",
-            "type": "fork",
-            "typeLabel": "Fork PSP",
-            "category": "Acción",
-            "arch": "ARM64 / WineNX",
-            "engine": [
-                "Autorun 4.5"
-            ],
-            "size": "2 GB",
-            "language": "en",
-            "author": "LordErick & NXMasters Team",
-            "status": "disponible",
-            "progress": 100,
-            "showProgress": true,
-            "enableTerabox": false,
-            "enableGdrive": false,
-            "enableViking": true,
-            "enableDownloads": true,
-            "downloads": 0,
-            "image": "assets/covers/cover_2_god_of_war_chains_of_oly.jpg",
-            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
-            "teraboxLink": "https://www.terabox.com/",
-            "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/ksgFY2IZH0",
             "patchLink": ""
         },
         {
