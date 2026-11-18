@@ -136,34 +136,6 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
-            "id": "1794977119909_86w5cw",
-            "title": "GOD OF WAR VETRAYAL",
-            "type": "fork",
-            "typeLabel": "Fork S PS2",
-            "category": "Acción",
-            "arch": "ARM64 / WineNX",
-            "engine": [
-                "Autorun 4.5"
-            ],
-            "size": "40 MB",
-            "language": "es",
-            "author": "NXMasters Team&LORDERICK&DaniUchiha",
-            "status": "disponible",
-            "progress": 100,
-            "showProgress": true,
-            "enableTerabox": false,
-            "enableGdrive": false,
-            "enableViking": true,
-            "enableDownloads": true,
-            "downloads": 0,
-            "image": "assets/covers/cover_god_of_war_vetrayal_1794977198029.jpg",
-            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
-            "teraboxLink": "https://www.terabox.com/",
-            "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/v9QaY5qchx",
-            "patchLink": ""
-        },
-        {
             "id": "1794855652125_j2jfgh",
             "title": "ultimate spiderman",
             "type": "fork",
@@ -1697,6 +1669,34 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "",
+            "patchLink": ""
+        },
+        {
+            "id": "1794977119909_86w5cw",
+            "title": "GOD OF WAR VETRAYAL",
+            "type": "fork",
+            "typeLabel": "Fork S PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "40 MB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_god_of_war_vetrayal_1794977198029.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/v9QaY5qchx",
             "patchLink": ""
         },
         {
