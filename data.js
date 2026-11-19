@@ -149,7 +149,7 @@ window.NX_CONFIG = {
             "language": "en",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
-            "progress": 64,
+            "progress": 84,
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
