@@ -151,8 +151,8 @@ window.NX_CONFIG = {
             "status": "disponible",
             "progress": 64,
             "showProgress": true,
-            "enableTerabox": true,
-            "enableGdrive": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "EL JUEGO NO ESTA COMPLETO EN EL FUTURO SE LE DARA UNA ACTUALISACION ",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "NXMasters Team&LORDERICK&DaniUchiha",
+            "vikingLink": "https://vik1ngfile.site/f/BTAfTuKHrW",
             "patchLink": ""
         },
         {
