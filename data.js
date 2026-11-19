@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795057608911_iny71a",
+            "title": "HOUSE OF THE DEAD 2 Y 3 ",
+            "type": "fork",
+            "typeLabel": "Fork WII",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "4.7 GB",
+            "language": "en",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 64,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_house_of_the_dead_2_y_3_1795057682540.jpg",
+            "description": "EL JUEGO NO ESTA COMPLETO EN EL FUTURO SE LE DARA UNA ACTUALISACION ",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "NXMasters Team&LORDERICK&DaniUchiha",
+            "patchLink": ""
+        },
+        {
             "id": "1794855652125_j2jfgh",
             "title": "ultimate spiderman",
             "type": "fork",
@@ -1221,34 +1249,6 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://vik1ngfile.site/f/5o8kHBv94T",
-            "patchLink": ""
-        },
-        {
-            "id": "1793339062601_lwn9kj",
-            "title": "DANTES INFERNO NXM",
-            "type": "fork",
-            "typeLabel": "Forks PSP",
-            "category": "Acción",
-            "arch": "ARM64 / WineNX",
-            "engine": [
-                "Autorun 4.5"
-            ],
-            "size": "2 GB",
-            "language": "es",
-            "author": "LordErick/DaniUchiha & NXMasters Team",
-            "status": "disponible",
-            "progress": 100,
-            "showProgress": true,
-            "enableTerabox": false,
-            "enableGdrive": false,
-            "enableViking": true,
-            "enableDownloads": true,
-            "downloads": 0,
-            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1793339071450.jpg",
-            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
-            "teraboxLink": "https://www.terabox.com/",
-            "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vikingfile.com/f/6eog1v4W7d",
             "patchLink": ""
         },
         {
