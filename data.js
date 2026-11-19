@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795119581441_40efdp",
+            "title": "SOUL CALIBUR BROKEN DESTINY HD ",
+            "type": "fork",
+            "typeLabel": "Fork PSP",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.7 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_soul_calibur_broken_dest_1795119628189.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/3YPe4RmFr3",
+            "patchLink": ""
+        },
+        {
             "id": "1795119428505_oirima",
             "title": "MONSTER HUNTER 3 PORTABLE  HD ",
             "type": "fork",
@@ -145,7 +173,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "1.5 GB",
             "language": "es",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
