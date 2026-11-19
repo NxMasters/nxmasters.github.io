@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "EL JUEGO NO ESTA COMPLETO EN EL FUTURO SE LE DARA UNA ACTUALISACION ",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/BTAfTuKHrW",
+            "vikingLink": "https://vik1ngfile.site/f/NTiRJVx3cU",
             "patchLink": ""
         },
         {
