@@ -184,7 +184,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_house_of_the_dead_2_y_3_1795061780765.jpg",
+            "image": "assets/covers/cover_house_of_the_dead_2_y_3_1795061797913.jpg",
             "description": "EL JUEGO NO ESTA COMPLETO EN EL FUTURO SE LE DARA UNA ACTUALISACION ",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
