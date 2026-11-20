@@ -2397,7 +2397,7 @@ window.NX_CONFIG = {
             "description": "Aporte de ItsDroidy06 con Asphalt 8 Airborne para la nintendo switch.",
             "teraboxLink": "https://1024terabox.com/s/1q5F9AxK4zgcxNJuKlq0_-A",
             "gdriveLink": "https://drive.google.com/file/d/12V1nkqczdgf7U_Aa7Rvu2e7Qjz8wKerr/view?usp=sharing",
-            "vikingLink": "https://vikinhttps://vik1ngfile.site/f/38HJl42YX8gfile.com/",
+            "vikingLink": "https://vik1ngfile.site/f/38HJl42YX8",
             "patchLink": "",
             "enableDownloads": true,
             "downloads": 0
