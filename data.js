@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795148397302_2akq14",
+            "title": "Tekken 5 – Dark Resurrection",
+            "type": "fork",
+            "typeLabel": "Fork PSP",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_tekken_5_dark_resurrecti_1795148564528.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/MXZJyjwUe8",
+            "patchLink": ""
+        },
+        {
             "id": "1795119581441_40efdp",
             "title": "SOUL CALIBUR BROKEN DESTINY HD ",
             "type": "fork",
