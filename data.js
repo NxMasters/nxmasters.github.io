@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795149180082_y23604",
+            "title": "FEAR ",
+            "type": "fork",
+            "typeLabel": "Fork XBOX ",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_fear_1795149265202.jpg",
+            "description": "PRESIONAN  L   Y  R DESPUES   pad derecho y en kernel  DESPUES idioma SELECCIONAN numero 5 DESPUES EN GUARDAD Y REINICIAN  EL JUGEO",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://vik1ngfile.site/f/yURv7hVPlx",
+            "patchLink": ""
+        },
+        {
             "id": "1795148397302_2akq14",
             "title": "Tekken 5 – Dark Resurrection",
             "type": "fork",
