@@ -653,14 +653,14 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": false,
+            "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_2_god_of_war_chains_of_oly.jpg",
             "description": "texturas HD",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/aKn0NUH7zY",
+            "vikingLink": "https://gofile.io/d/d76872ae-7e3c-408f-bdc1-187c47bee855",
             "patchLink": ""
         },
         {
