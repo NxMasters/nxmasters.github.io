@@ -440,7 +440,7 @@ window.NX_CONFIG = {
             "description": "SOLO PRESIONAR EN OK EN EL  MENSAGE QUE DA AL INICIAR EL JUEGO",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/jbyiDaZpmk",
+            "vikingLink": "https://gofile.io/d/40f2c50f-c37b-462a-9366-b24c97fc75d9",
             "patchLink": ""
         },
         {
