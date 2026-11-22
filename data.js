@@ -216,7 +216,7 @@ window.NX_CONFIG = {
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/iZIpUSgLE3",
+            "vikingLink": "https://gofile.io/d/828f9289-d510-4853-b859-7f416a824011",
             "patchLink": ""
         },
         {
