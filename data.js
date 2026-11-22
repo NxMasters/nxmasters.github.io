@@ -160,7 +160,7 @@ window.NX_CONFIG = {
             "description": "PRESIONAN  L   Y  R DESPUES   pad derecho y en kernel  DESPUES idioma SELECCIONAN numero 5 DESPUES EN GUARDAD Y REINICIAN  EL JUGEO",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/yURv7hVPlx",
+            "vikingLink": "https://gofile.io/d/50354b09-6bdd-4586-b2b3-c5152a7e1eef",
             "patchLink": ""
         },
         {
