@@ -153,7 +153,7 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": true,
+            "enableViking": false,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1795388184944.jpg",
