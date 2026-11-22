@@ -167,7 +167,7 @@ window.NX_CONFIG = {
             "id": "1795149180082_y23604",
             "title": "FEAR ",
             "type": "port",
-            "typeLabel": "Ports  XBOX ",
+            "typeLabel": "Ports  XBOX  360",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
