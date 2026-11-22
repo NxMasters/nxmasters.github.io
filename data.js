@@ -173,7 +173,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "3.5 GB",
             "language": "multi",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
@@ -279,7 +279,7 @@ window.NX_CONFIG = {
             "id": "1794852647058_gmv6ud",
             "title": "spec ops  NXMasters",
             "type": "port",
-            "typeLabel": "Ports ",
+            "typeLabel": "Ports  XBOX 360",
             "category": "Acción",
             "arch": "ARM64 / WineNX",
             "engine": [
