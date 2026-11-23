@@ -416,6 +416,34 @@ window.NX_CONFIG = {
             "patchLink": ""
         },
         {
+            "id": "1794230870620_30t8ky",
+            "title": "SHANK 2 ",
+            "type": "fork",
+            "typeLabel": "Fork CARAFE",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "3 GB",
+            "language": "en",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_shank_2_1794231010270.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://gofile.io/d/xsoC0btz",
+            "patchLink": ""
+        },
+        {
             "id": "1794657480386_bu22sy",
             "title": "kameo elements of power",
             "type": "port",
@@ -553,34 +581,6 @@ window.NX_CONFIG = {
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
             "vikingLink": "https://gofile.io/d/dea7b09b-1cb9-4b26-b71f-15b6aae657ce",
-            "patchLink": ""
-        },
-        {
-            "id": "1794230870620_30t8ky",
-            "title": "SHANK 2 ",
-            "type": "fork",
-            "typeLabel": "Fork CARAFE",
-            "category": "Acción",
-            "arch": "ARM64 / WineNX",
-            "engine": [
-                "Autorun 4.5"
-            ],
-            "size": "3 GB",
-            "language": "en",
-            "author": "NXMasters Team&LORDERICK&DaniUchiha",
-            "status": "disponible",
-            "progress": 100,
-            "showProgress": true,
-            "enableTerabox": false,
-            "enableGdrive": false,
-            "enableViking": false,
-            "enableDownloads": true,
-            "downloads": 0,
-            "image": "assets/covers/cover_shank_2_1794231010270.jpg",
-            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
-            "teraboxLink": "https://www.terabox.com/",
-            "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://vik1ngfile.site/f/lAgiNSqZSH",
             "patchLink": ""
         },
         {
