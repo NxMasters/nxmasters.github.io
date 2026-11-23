@@ -153,14 +153,14 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": false,
+            "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_spy_vs_spy_1795394429285.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://gofile.io/d/OhC3xpDD",
+            "vikingLink": "https://gofile.io/d/PN0fMvMq",
             "patchLink": ""
         },
         {
