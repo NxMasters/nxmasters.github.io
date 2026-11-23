@@ -165,7 +165,7 @@ window.NX_CONFIG = {
         },
         {
             "id": "1795397060074_8km5vh",
-            "title": "silent hill origins",
+            "title": "silent hill origins HD",
             "type": "fork",
             "typeLabel": "Fork psp",
             "category": "Acción",
