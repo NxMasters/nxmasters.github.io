@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795399912421_crk1yx",
+            "title": "RESIDENT EVIL OUTBREAK FILE 1",
+            "type": "fork",
+            "typeLabel": "Fork PS2",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_resident_evil_outbreak_f_1795399951047.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "",
+            "patchLink": ""
+        },
+        {
             "id": "1795399719729_irr5p9",
             "title": "SILENT HILL SHATERS MEMORIES  HD ",
             "type": "fork",
