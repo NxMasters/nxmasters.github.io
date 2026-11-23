@@ -153,14 +153,14 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": false,
+            "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_resident_evil_outbreak_f_1795399996026.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
-            "vikingLink": "https://gofile.io/d/rfCPniGH",
+            "vikingLink": "https://gofile.io/d/kkZZTvIf",
             "patchLink": ""
         },
         {
