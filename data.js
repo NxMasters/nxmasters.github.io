@@ -145,7 +145,7 @@ window.NX_CONFIG = {
             "engine": [
                 "Autorun 4.5"
             ],
-            "size": "1.0 GB",
+            "size": "4.0 GB",
             "language": "es",
             "author": "NXMasters Team&LORDERICK&DaniUchiha",
             "status": "disponible",
@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": true,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_resident_evil_outbreak_f_1795399951047.jpg",
+            "image": "assets/covers/cover_resident_evil_outbreak_f_1795399996026.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
