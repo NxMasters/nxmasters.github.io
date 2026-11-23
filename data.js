@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795399719729_irr5p9",
+            "title": "SILENT HILL SHATERS MEMORIES  HD ",
+            "type": "fork",
+            "typeLabel": "Fork PSP",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.0 GB",
+            "language": "es",
+            "author": "NXMasters Team&LORDERICK&DaniUchiha",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": true,
+            "enableGdrive": true,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_nuevo_proyecto_nxmasters_1795399755003.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://gofile.io/d/YyecymgY",
+            "patchLink": ""
+        },
+        {
             "id": "1795397060074_8km5vh",
             "title": "silent hill origins",
             "type": "fork",
