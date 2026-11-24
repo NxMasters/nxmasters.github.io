@@ -156,7 +156,7 @@ window.NX_CONFIG = {
             "enableViking": false,
             "enableDownloads": true,
             "downloads": 0,
-            "image": "assets/covers/cover_ultimate_aliance_1795494325390.jpg",
+            "image": "assets/covers/cover_ultimate_aliance_1795494590952.jpg",
             "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
             "teraboxLink": "https://www.terabox.com/",
             "gdriveLink": "https://drive.google.com/",
