@@ -136,6 +136,34 @@ window.NX_CONFIG = {
     ],
     "games": [
         {
+            "id": "1795492951179_c6sv0j",
+            "title": "obscure aftermaht",
+            "type": "fork",
+            "typeLabel": "Fork psp",
+            "category": "Acción",
+            "arch": "ARM64 / WineNX",
+            "engine": [
+                "Autorun 4.5"
+            ],
+            "size": "1.5 GB",
+            "language": "es",
+            "author": "",
+            "status": "disponible",
+            "progress": 100,
+            "showProgress": true,
+            "enableTerabox": false,
+            "enableGdrive": false,
+            "enableViking": true,
+            "enableDownloads": true,
+            "downloads": 0,
+            "image": "assets/covers/cover_obscure_aftermaht_1795492987717.jpg",
+            "description": "Escribe aquí los detalles del port, wrapper, recompilación o fork.",
+            "teraboxLink": "https://www.terabox.com/",
+            "gdriveLink": "https://drive.google.com/",
+            "vikingLink": "https://gofile.io/d/cgshOb6Z",
+            "patchLink": ""
+        },
+        {
             "id": "1795466234757_v1ymap",
             "title": "RESIDENT EVIL OUTBREAK FILE 2 ",
             "type": "fork",
