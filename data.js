@@ -153,7 +153,7 @@ window.NX_CONFIG = {
             "showProgress": true,
             "enableTerabox": false,
             "enableGdrive": false,
-            "enableViking": true,
+            "enableViking": false,
             "enableDownloads": true,
             "downloads": 0,
             "image": "assets/covers/cover_obscure_aftermaht_1795492987717.jpg",
